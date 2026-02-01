@@ -29,7 +29,7 @@ export default function PropertyHero({ dictionary, locale }: PropertyHeroProps) 
         {/* Logo */}
         <a href="/" className="flex items-center gap-1.5 group">
           <span className="text-white font-[family-name:var(--font-property-display)] text-lg md:text-xl font-semibold tracking-tight">
-            Get<span className="text-property-gold">Lux</span>Sold
+            GetLuxSold
           </span>
         </a>
 

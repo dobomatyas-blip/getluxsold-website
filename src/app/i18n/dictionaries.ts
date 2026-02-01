@@ -225,7 +225,7 @@ export const hu: Dictionary = {
     },
     serviceCard: {
       title: "Szeretne ilyen weboldalt saját vagy ügyfele ingatlanához?",
-      description: "Az Endless Solutions prémium ingatlan landing page-eket készít luxus ingatlanok értékesítéséhez.",
+      description: "A GetLuxSold.com segítségével luxus ingatlanát olyan prémium weboldalon mutathatja be, amely méltó annak értékéhez – és amelyet büszkén küldhet el potenciális vevőinek.",
       freeOffer: {
         badge: "LIMITÁLT AJÁNLAT",
         headline: "Az első 10 luxus ingatlannak INGYENES!",
@@ -492,7 +492,7 @@ export const en: Dictionary = {
     },
     serviceCard: {
       title: "Want a site like this for your property?",
-      description: "Endless Solutions creates premium property landing pages for luxury real estate sales.",
+      description: "With GetLuxSold.com, showcase your luxury property on a premium website worthy of its value – one you'll be proud to share with potential buyers.",
       freeOffer: {
         badge: "LIMITED OFFER",
         headline: "First 10 luxury properties FREE!",
@@ -759,7 +759,7 @@ export const de: Dictionary = {
     },
     serviceCard: {
       title: "Möchten Sie eine solche Website für Ihre Immobilie?",
-      description: "Endless Solutions erstellt Premium-Landingpages für den Verkauf von Luxusimmobilien.",
+      description: "Mit GetLuxSold.com präsentieren Sie Ihre Luxusimmobilie auf einer Premium-Website, die ihrem Wert entspricht – eine, die Sie stolz an potenzielle Käufer senden können.",
       freeOffer: {
         badge: "LIMITIERTES ANGEBOT",
         headline: "Die ersten 10 Luxusimmobilien KOSTENLOS!",
