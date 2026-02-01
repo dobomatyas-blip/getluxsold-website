@@ -161,6 +161,8 @@ export interface Dictionary {
     clientCard: {
       title: string;
       description: string;
+      requirementsTitle: string;
+      requirements: string[];
       note: string;
       cta: string;
     };

@@ -65,22 +65,42 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
         {/* Two Cards */}
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Client Card */}
-          <div className="property-card p-8 flex flex-col">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-property-navy/10 rounded-full flex items-center justify-center">
-                <UsersIcon className="w-6 h-6 text-property-navy" />
+          <div className="property-card p-8 flex flex-col border-2 border-property-navy/20">
+            {/* Header with icon */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-property-navy rounded-full flex items-center justify-center">
+                <ShieldCheckIcon className="w-6 h-6 text-white" />
               </div>
               <h3 className="property-subheading text-xl">
                 {agentCta.clientCard.title}
               </h3>
             </div>
 
-            <p className="text-property-text-muted leading-relaxed mb-6">
-              {agentCta.clientCard.description}
-            </p>
+            {/* Important notice banner */}
+            <div className="bg-property-navy/5 border-l-4 border-property-navy rounded-r-lg p-4 mb-6">
+              <p className="text-property-navy font-medium text-sm leading-relaxed">
+                {agentCta.clientCard.description}
+              </p>
+            </div>
 
-            <div className="bg-property-cream-dark border border-property-border rounded-lg p-4 mb-6">
-              <p className="text-sm text-property-text-muted italic">
+            {/* Requirements */}
+            <div className="mb-6">
+              <p className="text-sm font-semibold text-property-navy mb-3 uppercase tracking-wide">
+                {agentCta.clientCard.requirementsTitle}
+              </p>
+              <ul className="space-y-2">
+                {agentCta.clientCard.requirements.map((req, index) => (
+                  <li key={index} className="flex items-start gap-2 text-sm text-property-text-muted">
+                    <CheckCircleIcon className="w-5 h-5 text-property-navy flex-shrink-0 mt-0.5" />
+                    <span>{req}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Note */}
+            <div className="bg-property-cream-dark rounded-lg p-4 mb-6">
+              <p className="text-sm text-property-text-muted">
                 {agentCta.clientCard.note}
               </p>
             </div>
@@ -239,6 +259,22 @@ function CheckIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+    </svg>
+  );
+}
+
+function ShieldCheckIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+    </svg>
+  );
+}
+
+function CheckCircleIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
   );
 }
