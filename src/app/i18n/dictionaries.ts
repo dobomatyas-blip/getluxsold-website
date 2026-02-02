@@ -11,7 +11,7 @@ export const hu: Dictionary = {
     subheadline: "89m² tiszta lehetőség a Duna-parton. Várnegyedi örökség. Akadálytalan 360°-os kilátás. Készen áll az Ön víziójára.",
     ctaPrimary: "Privát megtekintés",
     ctaSecondary: "Befektetési összefoglaló",
-    agentLink: "Ingatlanközvetítőknek",
+    agentLink: "Partnereknek és tulajdonosoknak",
     stats: {
       size: "89 m²",
       floor: "4. emelet",
@@ -119,19 +119,14 @@ export const hu: Dictionary = {
         duration: "1-2 óra",
       },
       {
-        title: "Dokumentáció áttekintés",
-        description: "Teljes jogi csomag angol/német/magyar nyelven",
-        duration: "1 hét",
-      },
-      {
         title: "Ajánlat és tárgyalás",
         description: "Világos folyamat, rejtett költségek nélkül",
         duration: "1-2 hét",
       },
       {
-        title: "Átvilágítás",
-        description: "Független vizsgálat, jogi felülvizsgálat, tulajdonlap ellenőrzés",
-        duration: "2-3 hét",
+        title: "Szerződés egyeztetés",
+        description: "Szerződés egyeztethető angol és német nyelven is",
+        duration: "1 hét",
       },
       {
         title: "Szerződéskötés",
@@ -215,8 +210,8 @@ export const hu: Dictionary = {
     ],
   },
   agentCta: {
-    sectionTitle: "Ingatlanközvetítőknek",
-    sectionSubtitle: "Együttműködési lehetőségek luxus ingatlanokhoz",
+    sectionTitle: "Partnereknek és tulajdonosoknak",
+    sectionSubtitle: "A luxus ingatlanok világában a személyes kapcsolat az alapja mindennek. Tulajdonosoknak és partnereiknek olyan személyre szabott szolgáltatást nyújtunk, amit a prémium szegmensben elvárnak és megérdemelnek.",
     clientCard: {
       title: "Van kvalifikált vevője?",
       description: "Közvetlen tulajdonosi értékesítés – közvetítői együttműködésre kizárólag igazolt, komoly vevőjelölt esetén van lehetőség.",
@@ -285,7 +280,7 @@ export const en: Dictionary = {
     subheadline: "89m² of pure potential on the Danube waterfront. Castle District heritage. Unobstructed 360° views. Ready for your vision.",
     ctaPrimary: "Arrange Private Viewing",
     ctaSecondary: "Investment Portfolio",
-    agentLink: "For Real Estate Agents",
+    agentLink: "For partners & owners",
     stats: {
       size: "89 m²",
       floor: "4th Floor",
@@ -393,19 +388,14 @@ export const en: Dictionary = {
         duration: "1-2 hours",
       },
       {
-        title: "Documentation Review",
-        description: "Full legal package provided in English/German/Hungarian",
-        duration: "1 week",
-      },
-      {
         title: "Offer & Negotiation",
         description: "Clear process, no hidden fees",
         duration: "1-2 weeks",
       },
       {
-        title: "Due Diligence",
-        description: "Independent inspection, legal review, title verification",
-        duration: "2-3 weeks",
+        title: "Contract Negotiation",
+        description: "Contract available in English and German",
+        duration: "1 week",
       },
       {
         title: "Contract Signing",
@@ -489,8 +479,8 @@ export const en: Dictionary = {
     ],
   },
   agentCta: {
-    sectionTitle: "For Real Estate Agents",
-    sectionSubtitle: "Partnership opportunities for luxury properties",
+    sectionTitle: "For partners & owners",
+    sectionSubtitle: "In the world of luxury real estate, personal connection is everything. We provide property owners and their partners with the bespoke service they expect and deserve in the premium segment.",
     clientCard: {
       title: "Have a qualified buyer?",
       description: "Direct owner sale – agent cooperation is only possible with a verified, serious buyer prospect.",
@@ -559,7 +549,7 @@ export const de: Dictionary = {
     subheadline: "89m² pures Potenzial am Donauufer. Burgviertel-Erbe. Unverbauter 360°-Blick. Bereit für Ihre Vision.",
     ctaPrimary: "Private Besichtigung",
     ctaSecondary: "Investment-Portfolio",
-    agentLink: "Für Immobilienmakler",
+    agentLink: "Für Partner & Eigentümer",
     stats: {
       size: "89 m²",
       floor: "4. Stock",
@@ -667,19 +657,14 @@ export const de: Dictionary = {
         duration: "1-2 Stunden",
       },
       {
-        title: "Dokumentenprüfung",
-        description: "Vollständiges Rechtspaket in Englisch/Deutsch/Ungarisch",
-        duration: "1 Woche",
-      },
-      {
         title: "Angebot & Verhandlung",
         description: "Klarer Prozess, keine versteckten Kosten",
         duration: "1-2 Wochen",
       },
       {
-        title: "Due Diligence",
-        description: "Unabhängige Prüfung, Rechtsprüfung, Eigentumsverifizierung",
-        duration: "2-3 Wochen",
+        title: "Vertragsverhandlung",
+        description: "Vertrag auch auf Englisch und Deutsch verhandelbar",
+        duration: "1 Woche",
       },
       {
         title: "Vertragsunterzeichnung",
@@ -763,8 +748,8 @@ export const de: Dictionary = {
     ],
   },
   agentCta: {
-    sectionTitle: "Für Immobilienmakler",
-    sectionSubtitle: "Partnerschaftsmöglichkeiten für Luxusimmobilien",
+    sectionTitle: "Für Partner & Eigentümer",
+    sectionSubtitle: "In der Welt der Luxusimmobilien ist die persönliche Beziehung das Fundament. Wir bieten Eigentümern und ihren Partnern den maßgeschneiderten Service, den sie im Premium-Segment erwarten und verdienen.",
     clientCard: {
       title: "Haben Sie einen qualifizierten Käufer?",
       description: "Direktverkauf vom Eigentümer – Maklerkooperation ist nur mit einem verifizierten, ernsthaften Kaufinteressenten möglich.",

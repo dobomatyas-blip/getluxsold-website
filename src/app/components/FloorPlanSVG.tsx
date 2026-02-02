@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Dictionary } from "../i18n/types";
+import { Dictionary, Locale } from "../i18n/types";
 
 interface FloorPlanSVGProps {
   dictionary: Dictionary;
+  locale: Locale;
 }
 
 interface Room {
@@ -18,6 +19,56 @@ interface Room {
   area: string;
   nameKey: keyof Dictionary["potential"]["rooms"];
 }
+
+// Room descriptions by locale
+const roomDescriptions: Record<Locale, Record<string, string>> = {
+  hu: {
+    A1: "Erkély a Dunára néz – 180°-os panoráma a Parlamentre, Margit hídra és Lánchídra",
+    A2: "Nappali – összekötve az erkéllyel és a középső szobával",
+    A3: "Középső szoba – összekötve az erkéllyel és a nappalival",
+    A4: "Fürdőszoba – ablakos, kilátás a Dunára és a Batthyány térre. Összekötve az előszobával és a középső szobával",
+    A5: "Kis erkély – keletre néz, kilátás a Batthyány térre és a templomra",
+    A6: "Előszoba – bejárat nyugatról. Összekötve a középső szobával, a fürdőszobával és az átjáróval",
+    A7: "WC",
+    A8: "Átjáró – összeköti az előszobát a kis WC-vel, a kamrával és a konyhával",
+    A9: "Kamra",
+    A10: "Konyha – összekötve a kis erkéllyel és a kis szobával",
+    A11: "Kis szoba – összekötve a konyhával",
+  },
+  en: {
+    A1: "Balcony facing the Danube – 180° panorama of Parliament, Margaret Bridge and Chain Bridge",
+    A2: "Living room – connected to balcony and middle room",
+    A3: "Middle room – connected to balcony and living room",
+    A4: "Bathroom – with window, view of the Danube and Batthyány Square. Connected to hallway and middle room",
+    A5: "Small balcony – east facing, view of Batthyány Square and church",
+    A6: "Hallway – entrance from west. Connected to middle room, bathroom and passage",
+    A7: "WC",
+    A8: "Passage – connects hallway to WC, storage and kitchen",
+    A9: "Storage",
+    A10: "Kitchen – connected to small balcony and small room",
+    A11: "Small room – connected to kitchen",
+  },
+  de: {
+    A1: "Balkon mit Blick auf die Donau – 180°-Panorama auf Parlament, Margaretenbrücke und Kettenbrücke",
+    A2: "Wohnzimmer – verbunden mit Balkon und mittlerem Zimmer",
+    A3: "Mittleres Zimmer – verbunden mit Balkon und Wohnzimmer",
+    A4: "Badezimmer – mit Fenster, Blick auf die Donau und den Batthyány-Platz. Verbunden mit Flur und mittlerem Zimmer",
+    A5: "Kleiner Balkon – nach Osten, Blick auf Batthyány-Platz und Kirche",
+    A6: "Flur – Eingang von Westen. Verbunden mit mittlerem Zimmer, Badezimmer und Durchgang",
+    A7: "WC",
+    A8: "Durchgang – verbindet Flur mit WC, Abstellraum und Küche",
+    A9: "Abstellraum",
+    A10: "Küche – verbunden mit kleinem Balkon und kleinem Zimmer",
+    A11: "Kleines Zimmer – verbunden mit Küche",
+  },
+};
+
+// Compass labels by locale
+const compassLabels: Record<Locale, { north: string; south: string; east: string; west: string; danube: string }> = {
+  hu: { north: "É", south: "D", east: "K", west: "NY", danube: "DUNA" },
+  en: { north: "N", south: "S", east: "E", west: "W", danube: "DANUBE" },
+  de: { north: "N", south: "S", east: "O", west: "W", danube: "DONAU" },
+};
 
 // Exact coordinates from the provided SVG
 // Room mappings (corrected):
@@ -163,9 +214,11 @@ const rooms: Room[] = [
 // A1 left piece (vertical part of the L-shape)
 const a1LeftPiece = { x: 0, y: 194, width: 48, height: 136 };
 
-export default function FloorPlanSVG({ dictionary }: FloorPlanSVGProps) {
+export default function FloorPlanSVG({ dictionary, locale }: FloorPlanSVGProps) {
   const [hoveredRoom, setHoveredRoom] = useState<string | null>(null);
   const { potential } = dictionary;
+  const compass = compassLabels[locale];
+  const descriptions = roomDescriptions[locale];
 
   const getRoomName = (nameKey: keyof Dictionary["potential"]["rooms"]) => {
     return potential.rooms[nameKey];
@@ -180,17 +233,56 @@ export default function FloorPlanSVG({ dictionary }: FloorPlanSVGProps) {
     strokeHover: "#d4af37",     // gold on hover
     textPrimary: "#1a365d",     // navy
     textSecondary: "#6b6b6b",   // muted
+    compass: "#94a3b8",         // slate-400
+    danube: "#3b82f6",          // blue-500
   };
 
   return (
     <div className="w-full">
       <svg
-        viewBox="0 0 680 380"
+        viewBox="-60 -30 800 440"
         className="w-full h-auto"
-        style={{ maxHeight: "420px" }}
+        style={{ maxHeight: "480px" }}
       >
         {/* Background */}
-        <rect x="0" y="0" width="680" height="380" fill={colors.background} />
+        <rect x="-60" y="-30" width="800" height="440" fill={colors.background} />
+
+        {/* Danube indicator on the left */}
+        <g>
+          <rect x="-55" y="150" width="8" height="180" fill={colors.danube} opacity="0.3" rx="4" />
+          <text
+            x="-51"
+            y="240"
+            fill={colors.danube}
+            fontSize="11"
+            fontWeight="600"
+            writingMode="vertical-rl"
+            textAnchor="middle"
+            style={{ letterSpacing: "2px" }}
+          >
+            {compass.danube}
+          </text>
+        </g>
+
+        {/* Compass indicators */}
+        <g>
+          {/* South (up) */}
+          <text x="340" y="-10" fill={colors.compass} fontSize="12" fontWeight="600" textAnchor="middle">
+            ↑ {compass.south}
+          </text>
+          {/* North (down) */}
+          <text x="340" y="400" fill={colors.compass} fontSize="12" fontWeight="600" textAnchor="middle">
+            ↓ {compass.north}
+          </text>
+          {/* West (right) */}
+          <text x="700" y="190" fill={colors.compass} fontSize="12" fontWeight="600" textAnchor="start">
+            {compass.west} →
+          </text>
+          {/* East (left) - near Danube */}
+          <text x="-25" y="100" fill={colors.compass} fontSize="12" fontWeight="600" textAnchor="end">
+            ← {compass.east}
+          </text>
+        </g>
 
         {/* A1 left piece (L-shape vertical part) */}
         <rect
@@ -261,13 +353,18 @@ export default function FloorPlanSVG({ dictionary }: FloorPlanSVGProps) {
 
       {/* Hover info panel */}
       {hoveredRoom && (
-        <div className="mt-4 p-4 bg-white border border-property-border rounded-lg text-center shadow-sm">
-          <span className="font-bold text-property-gold mr-2">{hoveredRoom}</span>
-          <span className="font-semibold text-property-navy">
-            {getRoomName(rooms.find(r => r.id === hoveredRoom)?.nameKey || "living")}
-          </span>
-          <span className="mx-2 text-property-text-light">•</span>
-          <span className="text-property-text-muted">{rooms.find(r => r.id === hoveredRoom)?.area} m²</span>
+        <div className="mt-4 p-4 bg-white border border-property-border rounded-lg shadow-sm">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="font-bold text-property-gold">{hoveredRoom}</span>
+            <span className="font-semibold text-property-navy">
+              {getRoomName(rooms.find(r => r.id === hoveredRoom)?.nameKey || "living")}
+            </span>
+            <span className="text-property-text-light">•</span>
+            <span className="text-property-text-muted">{rooms.find(r => r.id === hoveredRoom)?.area} m²</span>
+          </div>
+          <p className="text-sm text-property-text-muted">
+            {descriptions[hoveredRoom]}
+          </p>
         </div>
       )}
     </div>

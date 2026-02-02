@@ -1,14 +1,12 @@
-import { Dictionary } from "../i18n/types";
-import LanguageSwitcher from "./LanguageSwitcher";
+import { Dictionary, Locale } from "../i18n/types";
 import CTAButton from "./CTAButton";
-import { Locale } from "../i18n/types";
 
 interface PropertyHeroProps {
   dictionary: Dictionary;
   locale: Locale;
 }
 
-export default function PropertyHero({ dictionary, locale }: PropertyHeroProps) {
+export default function PropertyHero({ dictionary }: PropertyHeroProps) {
   const { hero } = dictionary;
 
   return (
@@ -23,19 +21,6 @@ export default function PropertyHero({ dictionary, locale }: PropertyHeroProps) 
 
       {/* Overlay */}
       <div className="absolute inset-0 property-hero-overlay" />
-
-      {/* Header */}
-      <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <a href="/" className="flex items-center gap-1.5 group">
-          <span className="text-white font-[family-name:var(--font-property-display)] text-lg md:text-xl font-semibold tracking-tight">
-            GetLuxSold
-          </span>
-        </a>
-
-        {/* Language Switcher */}
-        <LanguageSwitcher currentLocale={locale} />
-      </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">

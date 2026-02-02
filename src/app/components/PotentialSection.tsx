@@ -1,13 +1,14 @@
 import Image from "next/image";
-import { Dictionary } from "../i18n/types";
+import { Dictionary, Locale } from "../i18n/types";
 import InvestmentProjection from "./InvestmentProjection";
 import FloorPlanSVG from "./FloorPlanSVG";
 
 interface PotentialSectionProps {
   dictionary: Dictionary;
+  locale: Locale;
 }
 
-export default function PotentialSection({ dictionary }: PotentialSectionProps) {
+export default function PotentialSection({ dictionary, locale }: PotentialSectionProps) {
   const { potential } = dictionary;
 
   return (
@@ -33,7 +34,7 @@ export default function PotentialSection({ dictionary }: PotentialSectionProps) 
               </h3>
             </div>
             <div className="p-4 bg-white">
-              <FloorPlanSVG dictionary={dictionary} />
+              <FloorPlanSVG dictionary={dictionary} locale={locale} />
             </div>
           </div>
 
