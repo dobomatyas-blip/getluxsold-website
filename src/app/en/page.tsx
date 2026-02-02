@@ -1,27 +1,35 @@
 import { Metadata } from "next";
-import { en } from "../i18n/dictionaries";
-import PropertyPage from "../components/PropertyPage";
+import HomePage from "../components/HomePage";
 
 export const metadata: Metadata = {
-  title: en.meta.title,
-  description: en.meta.description,
+  title: "GetLuxSold - Premium Properties | Budapest",
+  description:
+    "Exclusive premium properties in Budapest. Find your dream home in the finest locations.",
   openGraph: {
-    title: en.meta.title,
-    description: en.meta.description,
+    title: "GetLuxSold - Premium Properties",
+    description: "Exclusive premium properties in Budapest.",
     url: "https://getluxsold.com/en",
-    siteName: "Bem rakpart 26",
+    siteName: "GetLuxSold",
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "GetLuxSold - Premium Properties | Budapest",
+    description:
+      "Exclusive premium properties in Budapest. Find your dream home in the finest locations.",
+  },
   alternates: {
+    canonical: "https://getluxsold.com/en",
     languages: {
-      hu: "/",
-      en: "/en",
-      de: "/de",
+      hu: "https://getluxsold.com",
+      en: "https://getluxsold.com/en",
+      de: "https://getluxsold.com/de",
+      "x-default": "https://getluxsold.com/en",
     },
   },
 };
 
-export default function EnglishPage() {
-  return <PropertyPage dictionary={en} locale="en" />;
+export default function EnglishHomePage() {
+  return <HomePage locale="en" />;
 }
