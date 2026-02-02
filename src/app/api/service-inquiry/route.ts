@@ -10,44 +10,44 @@ interface ServiceInquiryData {
 }
 
 const confirmationSubjects = {
-  hu: "Endless Solutions - Luxus Ingatlan Landing Page Érdeklődés",
-  en: "Endless Solutions - Luxury Property Landing Page Inquiry",
-  de: "Endless Solutions - Luxusimmobilien-Landingpage Anfrage",
+  hu: "GetLuxSold - Luxus Ingatlan Landing Page Érdeklődés",
+  en: "GetLuxSold - Luxury Property Landing Page Inquiry",
+  de: "GetLuxSold - Luxusimmobilien-Landingpage Anfrage",
 };
 
 const confirmationMessages = {
   hu: {
     greeting: "Kedves",
-    thanks: "Köszönjük érdeklődését az Endless Solutions luxus ingatlan landing page szolgáltatása iránt!",
+    thanks: "Köszönjük érdeklődését a GetLuxSold luxus ingatlan landing page szolgáltatása iránt!",
     received: "Jelentkezését megkaptuk. Csapatunk hamarosan, 48 órán belül felveszi Önnel a kapcsolatot a részletek egyeztetése céljából.",
     freeNote: "Az első 10 prémium ingatlannak INGYENES szolgáltatást biztosítunk.",
     details: "A beküldött adatok",
     propertyAddress: "Ingatlan címe",
     message: "Üzenet",
     closing: "Üdvözlettel",
-    team: "Endless Solutions Kft.",
+    team: "GetLuxSold",
   },
   en: {
     greeting: "Dear",
-    thanks: "Thank you for your interest in Endless Solutions' luxury property landing page service!",
+    thanks: "Thank you for your interest in GetLuxSold's luxury property landing page service!",
     received: "We have received your application. Our team will contact you within 48 hours to discuss the details.",
     freeNote: "We're offering FREE service to the first 10 premium properties.",
     details: "Submitted information",
     propertyAddress: "Property address",
     message: "Message",
     closing: "Best regards",
-    team: "Endless Solutions Kft.",
+    team: "GetLuxSold",
   },
   de: {
     greeting: "Sehr geehrte/r",
-    thanks: "Vielen Dank für Ihr Interesse am Luxusimmobilien-Landingpage-Service von Endless Solutions!",
+    thanks: "Vielen Dank für Ihr Interesse am Luxusimmobilien-Landingpage-Service von GetLuxSold!",
     received: "Wir haben Ihre Bewerbung erhalten. Unser Team wird Sie innerhalb von 48 Stunden kontaktieren, um die Details zu besprechen.",
     freeNote: "Wir bieten KOSTENLOSEN Service für die ersten 10 Premium-Immobilien an.",
     details: "Eingereichte Informationen",
     propertyAddress: "Immobilienadresse",
     message: "Nachricht",
     closing: "Mit freundlichen Grüßen",
-    team: "Endless Solutions Kft.",
+    team: "GetLuxSold",
   },
 };
 
@@ -93,7 +93,7 @@ export async function POST(request: Request) {
     const toEmail = process.env.ENDLESS_SOLUTIONS_EMAIL || "info@endlesssolutions.net";
     const lang = data.language || "en";
 
-    // Send notification to Endless Solutions
+    // Send notification to GetLuxSold
     await transporter.sendMail({
       from: `GetLuxSold <${fromEmail}>`,
       to: toEmail,
@@ -167,7 +167,7 @@ export async function POST(request: Request) {
             <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
               <div style="text-align: center; margin-bottom: 32px;">
                 <h1 style="color: #1a365d; margin: 0; font-size: 28px; font-family: Georgia, serif;">
-                  Endless Solutions
+                  GetLuxSold
                 </h1>
                 <p style="color: #d4af37; margin: 8px 0 0 0; font-size: 14px; letter-spacing: 1px;">
                   LUXURY PROPERTY LANDING PAGES
@@ -218,7 +218,7 @@ export async function POST(request: Request) {
               <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #e5e3df; text-align: center; color: #6b6b6b; font-size: 12px;">
                 <p style="margin: 0;">Budapest, Hungary</p>
                 <p style="margin: 4px 0 0 0;">
-                  <a href="https://endlesssolutions.net" style="color: #1a365d;">endlesssolutions.net</a>
+                  <a href="https://getluxsold.com" style="color: #1a365d;">getluxsold.com</a>
                 </p>
               </div>
             </div>
