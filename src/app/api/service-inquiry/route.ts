@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
 interface ServiceInquiryData {
@@ -51,6 +51,16 @@ const confirmationMessages = {
   },
 };
 
+function createTransporter() {
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
+}
+
 export async function POST(request: Request) {
   try {
     const data: ServiceInquiryData = await request.json();
@@ -70,23 +80,22 @@ export async function POST(request: Request) {
       );
     }
 
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error("RESEND_API_KEY not configured");
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error("Gmail credentials not configured");
       return NextResponse.json(
         { error: "Email service not configured" },
         { status: 500 }
       );
     }
 
-    const resend = new Resend(apiKey);
-    const fromEmail = process.env.RESEND_FROM_EMAIL || "Endless Solutions <onboarding@resend.dev>";
+    const transporter = createTransporter();
+    const fromEmail = process.env.GMAIL_USER;
     const toEmail = process.env.ENDLESS_SOLUTIONS_EMAIL || "info@endlesssolutions.net";
     const lang = data.language || "en";
 
     // Send notification to Endless Solutions
-    await resend.emails.send({
-      from: fromEmail,
+    await transporter.sendMail({
+      from: `GetLuxSold <${fromEmail}>`,
       to: toEmail,
       subject: `[Property Landing Page] FREE offer application from ${data.name}`,
       html: `
@@ -144,8 +153,8 @@ export async function POST(request: Request) {
 
     // Send confirmation to applicant
     const msg = confirmationMessages[lang];
-    await resend.emails.send({
-      from: fromEmail,
+    await transporter.sendMail({
+      from: `GetLuxSold <${fromEmail}>`,
       to: data.email,
       subject: confirmationSubjects[lang],
       html: `

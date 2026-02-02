@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
 interface InquiryData {
@@ -78,6 +78,16 @@ const confirmationMessages = {
   },
 };
 
+function createTransporter() {
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
+}
+
 export async function POST(request: Request) {
   try {
     const data: InquiryData = await request.json();
@@ -97,23 +107,22 @@ export async function POST(request: Request) {
       );
     }
 
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error("RESEND_API_KEY not configured");
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error("Gmail credentials not configured");
       return NextResponse.json(
         { error: "Email service not configured" },
         { status: 500 }
       );
     }
 
-    const resend = new Resend(apiKey);
-    const fromEmail = process.env.RESEND_FROM_EMAIL || "Bem rakpart 26 <onboarding@resend.dev>";
+    const transporter = createTransporter();
+    const fromEmail = process.env.GMAIL_USER;
     const toEmail = process.env.BEMRAKPART_INQUIRY_EMAIL || "dobomatyas@me.com";
     const lang = data.language || "en";
 
     // Send notification to property agent
-    await resend.emails.send({
-      from: fromEmail,
+    await transporter.sendMail({
+      from: `Bem rakpart 26 <${fromEmail}>`,
       to: toEmail,
       subject: `[Bem rakpart 26] New ${data.inquiryType} inquiry from ${data.name}`,
       html: `
@@ -175,8 +184,8 @@ export async function POST(request: Request) {
 
     // Send confirmation to inquirer
     const msg = confirmationMessages[lang];
-    await resend.emails.send({
-      from: fromEmail,
+    await transporter.sendMail({
+      from: `Bem rakpart 26 <${fromEmail}>`,
       to: data.email,
       subject: confirmationSubjects[lang],
       html: `
