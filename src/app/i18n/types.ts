@@ -12,6 +12,7 @@ export interface Dictionary {
     agentLink: string;
     stats: {
       size: string;
+      ceilingHeight: string;
       floor: string;
       views: string;
       location: string;
@@ -205,4 +206,11 @@ export interface Dictionary {
   };
 }
 
-export type Locale = "hu" | "en" | "de";
+export type Locale = "hu" | "en" | "de" | "zh" | "he" | "vi" | "ru";
+
+export const ALL_LOCALES: Locale[] = ["hu", "en", "de", "zh", "he", "vi", "ru"];
+export const RTL_LOCALES: Locale[] = ["he"];
+
+export function isRtl(locale: Locale): boolean {
+  return RTL_LOCALES.includes(locale);
+}

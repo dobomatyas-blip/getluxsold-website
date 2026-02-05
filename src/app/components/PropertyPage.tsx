@@ -10,6 +10,8 @@ import TestimonialsSection from "./TestimonialsSection";
 import ContactForm from "./ContactForm";
 import AgentCTASection from "./AgentCTASection";
 import PropertyFooter from "./PropertyFooter";
+import HtmlLangSetter from "./HtmlLangSetter";
+import DirectionWrapper from "./DirectionWrapper";
 
 interface PropertyPageProps {
   dictionary: Dictionary;
@@ -19,7 +21,8 @@ interface PropertyPageProps {
 
 export default function PropertyPage({ dictionary, locale, basePath }: PropertyPageProps) {
   return (
-    <>
+    <DirectionWrapper locale={locale}>
+      <HtmlLangSetter locale={locale} />
       <FloatingHeader locale={locale} basePath={basePath} />
       <PropertyHero dictionary={dictionary} locale={locale} />
       <OpportunitySection dictionary={dictionary} />
@@ -31,6 +34,6 @@ export default function PropertyPage({ dictionary, locale, basePath }: PropertyP
       <ContactForm dictionary={dictionary} locale={locale} />
       <AgentCTASection dictionary={dictionary} locale={locale} />
       <PropertyFooter dictionary={dictionary} />
-    </>
+    </DirectionWrapper>
   );
 }

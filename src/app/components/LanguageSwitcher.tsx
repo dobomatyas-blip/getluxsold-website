@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "../i18n/types";
 
@@ -7,10 +10,14 @@ interface LanguageSwitcherProps {
   basePath?: string;
 }
 
-const languages: { locale: Locale; label: string }[] = [
-  { locale: "hu", label: "HU" },
-  { locale: "en", label: "EN" },
-  { locale: "de", label: "DE" },
+const languages: { locale: Locale; label: string; nativeName: string }[] = [
+  { locale: "hu", label: "HU", nativeName: "Magyar" },
+  { locale: "en", label: "EN", nativeName: "English" },
+  { locale: "de", label: "DE", nativeName: "Deutsch" },
+  { locale: "zh", label: "ZH", nativeName: "中文" },
+  { locale: "he", label: "HE", nativeName: "עברית" },
+  { locale: "vi", label: "VI", nativeName: "Tiếng Việt" },
+  { locale: "ru", label: "RU", nativeName: "Русский" },
 ];
 
 function getLocalePath(locale: Locale, basePath?: string): string {
@@ -21,37 +28,62 @@ function getLocalePath(locale: Locale, basePath?: string): string {
 }
 
 export default function LanguageSwitcher({ currentLocale, isScrolled = false, basePath }: LanguageSwitcherProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const currentLang = languages.find((l) => l.locale === currentLocale);
+
   return (
-    <div
-      className={`flex items-center gap-1 backdrop-blur-sm rounded-full px-2 py-1 transition-colors duration-300 ${
-        isScrolled ? "bg-property-navy/5" : "bg-white/10"
-      }`}
-    >
-      {languages.map(({ locale, label }, index) => (
-        <span key={locale} className="flex items-center">
-          {index > 0 && (
-            <span
-              className={`mx-1 transition-colors duration-300 ${
-                isScrolled ? "text-property-navy/30" : "text-white/30"
+    <div ref={dropdownRef} className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-colors backdrop-blur-sm ${
+          isScrolled
+            ? "bg-property-navy/5 text-property-navy hover:bg-property-navy/10"
+            : "bg-white/10 text-white hover:bg-white/20"
+        }`}
+      >
+        {currentLang?.label}
+        <svg
+          className={`w-3.5 h-3.5 transition-transform ${isOpen ? "rotate-180" : ""}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div className="absolute end-0 top-full mt-2 bg-white rounded-lg shadow-lg py-1 min-w-[160px] z-50 border border-gray-100">
+          {languages.map(({ locale, label, nativeName }) => (
+            <Link
+              key={locale}
+              href={getLocalePath(locale, basePath)}
+              className={`block px-4 py-2 text-sm transition-colors hover:bg-gray-50 ${
+                currentLocale === locale
+                  ? "text-property-gold font-medium"
+                  : "text-gray-700 hover:text-gray-900"
               }`}
+              onClick={() => setIsOpen(false)}
             >
-              |
-            </span>
-          )}
-          <Link
-            href={getLocalePath(locale, basePath)}
-            className={`px-2 py-1 text-sm font-medium transition-colors rounded ${
-              currentLocale === locale
-                ? "text-property-gold"
-                : isScrolled
-                ? "text-property-navy/70 hover:text-property-navy"
-                : "text-white/70 hover:text-white"
-            }`}
-          >
-            {label}
-          </Link>
-        </span>
-      ))}
+              <span className="font-medium">{label}</span>
+              <span className="mx-1.5 text-gray-300">·</span>
+              <span>{nativeName}</span>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

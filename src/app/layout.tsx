@@ -1,18 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Noto_Sans_SC } from "next/font/google";
 import "./styles/property.css";
 import DevTools from "./components/DevTools";
 import { OrganizationJsonLd } from "./components/JsonLd";
 
 const playfair = Playfair_Display({
   variable: "--font-property-display",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin", "latin-ext", "cyrillic", "vietnamese"],
   weight: ["400", "500", "600", "700"],
 });
 
 const inter = Inter({
   variable: "--font-property-body",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext", "vietnamese"],
+});
+
+const notoSansSC = Noto_Sans_SC({
+  variable: "--font-property-cjk",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -53,8 +59,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="hu">
-      <body className={`${playfair.variable} ${inter.variable} property-page`}>
+    <html lang="hu" suppressHydrationWarning>
+      <body className={`${playfair.variable} ${inter.variable} ${notoSansSC.variable} property-page`}>
         <OrganizationJsonLd />
         {children}
         <DevTools />

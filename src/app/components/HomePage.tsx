@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Locale } from "../i18n/types";
+import HtmlLangSetter from "./HtmlLangSetter";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 // Text logo component matching the FloatingHeader style
 function TextLogo({ className = "" }: { className?: string }) {
@@ -121,6 +123,98 @@ const homeDictionaries: Record<Locale, HomePageDictionary> = {
       errorMessage: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     },
   },
+  zh: {
+    title: "在售房产",
+    subtitle: "优越地段的高端房产",
+    viewProperty: "查看详情",
+    ctaBanner: {
+      text: "出售豪华房产？为业主提供定制化服务。",
+      button: "联系我们",
+    },
+    contact: {
+      title: "联系我们",
+      subtitle: "对我们的服务感兴趣？发送消息给我们！",
+      nameLabel: "姓名",
+      namePlaceholder: "您的姓名",
+      emailLabel: "电子邮箱",
+      emailPlaceholder: "email@example.com",
+      messageLabel: "留言",
+      messagePlaceholder: "我们能帮您什么？",
+      submitButton: "发送消息",
+      submitting: "发送中...",
+      successMessage: "感谢您！我们会尽快与您联系。",
+      errorMessage: "发生错误，请重试。",
+    },
+  },
+  he: {
+    title: "נכסים מוצעים",
+    subtitle: "נכסי פרימיום במיקומים בלעדיים",
+    viewProperty: "צפה בנכס",
+    ctaBanner: {
+      text: "מוכר נכס יוקרה? שירות מותאם אישית לבעלי נכסים.",
+      button: "צור קשר",
+    },
+    contact: {
+      title: "צור קשר",
+      subtitle: "מעוניין בשירותים שלנו? שלח לנו הודעה!",
+      nameLabel: "שם",
+      namePlaceholder: "השם שלך",
+      emailLabel: "דוא\"ל",
+      emailPlaceholder: "email@example.com",
+      messageLabel: "הודעה",
+      messagePlaceholder: "כיצד נוכל לעזור?",
+      submitButton: "שלח הודעה",
+      submitting: "שולח...",
+      successMessage: "תודה! ניצור קשר בקרוב.",
+      errorMessage: "אירעה שגיאה. אנא נסה שוב.",
+    },
+  },
+  vi: {
+    title: "Bất Động Sản Đang Bán",
+    subtitle: "Bất động sản cao cấp tại các vị trí đắc địa",
+    viewProperty: "Xem chi tiết",
+    ctaBanner: {
+      text: "Bán bất động sản cao cấp? Dịch vụ tùy chỉnh cho chủ sở hữu.",
+      button: "Liên hệ",
+    },
+    contact: {
+      title: "Liên Hệ",
+      subtitle: "Quan tâm đến dịch vụ của chúng tôi? Gửi tin nhắn cho chúng tôi!",
+      nameLabel: "Họ tên",
+      namePlaceholder: "Tên của bạn",
+      emailLabel: "Email",
+      emailPlaceholder: "email@example.com",
+      messageLabel: "Tin nhắn",
+      messagePlaceholder: "Chúng tôi có thể giúp gì?",
+      submitButton: "Gửi tin nhắn",
+      submitting: "Đang gửi...",
+      successMessage: "Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm.",
+      errorMessage: "Đã xảy ra lỗi. Vui lòng thử lại.",
+    },
+  },
+  ru: {
+    title: "Объекты недвижимости",
+    subtitle: "Премиальная недвижимость в эксклюзивных локациях",
+    viewProperty: "Подробнее",
+    ctaBanner: {
+      text: "Продаёте элитную недвижимость? Индивидуальный сервис для собственников.",
+      button: "Связаться",
+    },
+    contact: {
+      title: "Свяжитесь с нами",
+      subtitle: "Интересуют наши услуги? Напишите нам!",
+      nameLabel: "Имя",
+      namePlaceholder: "Ваше имя",
+      emailLabel: "Электронная почта",
+      emailPlaceholder: "email@example.com",
+      messageLabel: "Сообщение",
+      messagePlaceholder: "Чем мы можем помочь?",
+      submitButton: "Отправить сообщение",
+      submitting: "Отправка...",
+      successMessage: "Спасибо! Мы свяжемся с вами в ближайшее время.",
+      errorMessage: "Произошла ошибка. Попробуйте ещё раз.",
+    },
+  },
 };
 
 const properties: Property[] = [
@@ -186,6 +280,7 @@ export default function HomePage({ locale }: HomePageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      <HtmlLangSetter locale={locale} />
       {/* CTA Banner */}
       <div className="bg-slate-900 text-white py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center sm:text-left">
@@ -209,38 +304,7 @@ export default function HomePage({ locale }: HomePageProps) {
             <Link href={homePath} className="flex items-center gap-3">
               <TextLogo className="text-slate-900" />
             </Link>
-            <div className="flex items-center gap-2">
-              <Link
-                href="/"
-                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                  locale === "hu"
-                    ? "bg-amber-100 text-amber-800"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                HU
-              </Link>
-              <Link
-                href="/en"
-                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                  locale === "en"
-                    ? "bg-amber-100 text-amber-800"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                EN
-              </Link>
-              <Link
-                href="/de"
-                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
-                  locale === "de"
-                    ? "bg-amber-100 text-amber-800"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                DE
-              </Link>
-            </div>
+            <LanguageSwitcher currentLocale={locale} isScrolled />
           </div>
         </div>
       </header>

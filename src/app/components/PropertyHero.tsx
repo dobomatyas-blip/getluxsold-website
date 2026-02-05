@@ -63,6 +63,8 @@ export default function PropertyHero({ dictionary }: PropertyHeroProps) {
         <div className="property-animate-fade-up property-delay-500 flex flex-wrap items-center justify-center gap-4 md:gap-8 text-white/90">
           <StatItem label={hero.stats.size} />
           <Divider />
+          <StatItem label={hero.stats.ceilingHeight} />
+          <Divider />
           <StatItem label={hero.stats.floor} />
           <Divider />
           <StatItem label={hero.stats.views} />

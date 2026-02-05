@@ -1,26 +1,26 @@
 import { Metadata } from "next";
-import { hu } from "../../i18n/dictionaries";
-import PropertyPage from "../../components/PropertyPage";
-import { PropertyJsonLd, BreadcrumbJsonLd } from "../../components/JsonLd";
+import { vi } from "../../../i18n/dictionaries";
+import PropertyPage from "../../../components/PropertyPage";
+import { PropertyJsonLd, BreadcrumbJsonLd } from "../../../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: hu.meta.title,
-  description: hu.meta.description,
+  title: vi.meta.title,
+  description: vi.meta.description,
   openGraph: {
-    title: hu.meta.title,
-    description: hu.meta.description,
-    url: "https://getluxsold.com/properties/bem-rakpart-26",
+    title: vi.meta.title,
+    description: vi.meta.description,
+    url: "https://getluxsold.com/properties/bem-rakpart-26/vi",
     siteName: "GetLuxSold",
-    locale: "hu_HU",
+    locale: "vi_VN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: hu.meta.title,
-    description: hu.meta.description,
+    title: vi.meta.title,
+    description: vi.meta.description,
   },
   alternates: {
-    canonical: "https://getluxsold.com/properties/bem-rakpart-26",
+    canonical: "https://getluxsold.com/properties/bem-rakpart-26/vi",
     languages: {
       hu: "https://getluxsold.com/properties/bem-rakpart-26",
       en: "https://getluxsold.com/properties/bem-rakpart-26/en",
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BemRakpartPage() {
+export default function BemRakpartVietnamesePage() {
   return (
     <>
       <PropertyJsonLd
         name="Bem rakpart 26"
-        description={hu.meta.description}
-        url="https://getluxsold.com/properties/bem-rakpart-26"
+        description={vi.meta.description}
+        url="https://getluxsold.com/properties/bem-rakpart-26/vi"
         streetAddress="Bem rakpart 26"
         addressLocality="Budapest"
         postalCode="1011"
@@ -62,11 +62,11 @@ export default function BemRakpartPage() {
       />
       <BreadcrumbJsonLd
         items={[
-          { name: "GetLuxSold", url: "https://getluxsold.com" },
-          { name: "Bem rakpart 26", url: "https://getluxsold.com/properties/bem-rakpart-26" },
+          { name: "GetLuxSold", url: "https://getluxsold.com/vi" },
+          { name: "Bem rakpart 26", url: "https://getluxsold.com/properties/bem-rakpart-26/vi" },
         ]}
       />
-      <PropertyPage dictionary={hu} locale="hu" basePath="/properties/bem-rakpart-26" />
+      <PropertyPage dictionary={vi} locale="vi" basePath="/properties/bem-rakpart-26" />
     </>
   );
 }

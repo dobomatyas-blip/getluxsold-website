@@ -222,6 +222,22 @@
   color: var(--property-text-light);
 }
 
+/* CJK font support for Chinese locale */
+[lang="zh"] .property-page,
+[lang="zh"] .property-page * {
+  font-family: var(--font-property-cjk), var(--font-property-body), sans-serif;
+}
+
+[lang="zh"] .property-heading,
+[lang="zh"] .property-subheading {
+  font-family: var(--font-property-display), var(--font-property-cjk), sans-serif;
+}
+
+/* RTL arrow flip */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
 /* Selection */
 .property-page ::selection {
   background-color: rgba(212, 175, 55, 0.3);
