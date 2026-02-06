@@ -233,25 +233,16 @@ const renovationRooms: Room[] = [
     area: "4.9",
     nameKey: "hallway",
   },
-  // A10 - NOW: Bedroom + Office (merged A10+A11, L-shaped main rect)
-  {
-    id: "A10",
-    x: 517,
-    y: 101,
-    width: 83,
-    height: 208,
-    labelX: 575,
-    labelY: 230,
-    area: "14.5",
-    nameKey: "bedroomOffice",
-  },
 ];
 
 // A1 left piece (vertical part of the L-shape) - unchanged
 const a1LeftPiece = { x: 0, y: 194, width: 48, height: 136 };
 
-// A10 extension piece (the former A11 area, now part of bedroom+office)
-const a10Extension = { x: 606, y: 154, width: 60, height: 208 };
+// A10 merged L-shape path (old A10 + old A11, wall removed)
+// Old A10: x=517, y=101, w=83, h=208 (517-600, 101-309)
+// Old A11: x=606, y=154, w=60, h=208 (606-666, 154-362)
+// Merged: single connected L-shape without the wall
+const a10MergedPath = "M 517,101 L 600,101 L 600,154 L 666,154 L 666,362 L 606,362 L 606,309 L 517,309 Z";
 
 export default function RenovationFloorPlanSVG({ dictionary, locale }: RenovationFloorPlanSVGProps) {
   const [hoveredRoom, setHoveredRoom] = useState<string | null>(null);
@@ -334,19 +325,41 @@ export default function RenovationFloorPlanSVG({ dictionary, locale }: Renovatio
           onMouseLeave={() => setHoveredRoom(null)}
         />
 
-        {/* A10 extension piece (former A11 area, now part of bedroom+office) */}
-        <rect
-          x={a10Extension.x}
-          y={a10Extension.y}
-          width={a10Extension.width}
-          height={a10Extension.height}
-          fill={hoveredRoom === "A10" ? colors.roomHover : colors.roomFill}
-          stroke={hoveredRoom === "A10" ? colors.strokeHover : colors.stroke}
-          strokeWidth="1"
-          className="transition-all duration-200 cursor-pointer"
+        {/* A10 - Merged Bedroom + Office (L-shaped, wall removed) */}
+        <g
           onMouseEnter={() => setHoveredRoom("A10")}
           onMouseLeave={() => setHoveredRoom(null)}
-        />
+          className="cursor-pointer"
+        >
+          <path
+            d={a10MergedPath}
+            fill={hoveredRoom === "A10" ? colors.roomHover : colors.roomFill}
+            stroke={hoveredRoom === "A10" ? colors.strokeHover : colors.stroke}
+            strokeWidth="1"
+            className="transition-all duration-200"
+          />
+          <text
+            x="575"
+            y="224"
+            textAnchor="middle"
+            fill={hoveredRoom === "A10" ? "#1a365d" : colors.textPrimary}
+            fontSize="13"
+            fontWeight="600"
+            className="pointer-events-none select-none transition-all duration-200"
+          >
+            A10
+          </text>
+          <text
+            x="575"
+            y="240"
+            textAnchor="middle"
+            fill={hoveredRoom === "A10" ? "#1a365d" : colors.textSecondary}
+            fontSize="11"
+            className="pointer-events-none select-none transition-all duration-200"
+          >
+            14.5 m²
+          </text>
+        </g>
 
         {/* All rooms */}
         {renovationRooms.map((room) => {
@@ -425,21 +438,27 @@ export default function RenovationFloorPlanSVG({ dictionary, locale }: Renovatio
       </svg>
 
       {/* Hover info panel */}
-      {hoveredRoom && (
-        <div className="mt-4 p-4 bg-white border border-property-border rounded-lg shadow-sm">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="font-bold text-property-gold">{hoveredRoom}</span>
-            <span className="font-semibold text-property-navy">
-              {getRoomName(renovationRooms.find(r => r.id === hoveredRoom)?.nameKey || "living")}
-            </span>
-            <span className="text-property-text-light">•</span>
-            <span className="text-property-text-muted">{renovationRooms.find(r => r.id === hoveredRoom)?.area} m²</span>
+      {hoveredRoom && (() => {
+        const foundRoom = renovationRooms.find(r => r.id === hoveredRoom);
+        const roomName = hoveredRoom === "A10"
+          ? potential.rooms.bedroomOffice
+          : getRoomName(foundRoom?.nameKey || "living");
+        const roomArea = hoveredRoom === "A10" ? "14.5" : foundRoom?.area;
+
+        return (
+          <div className="mt-4 p-4 bg-white border border-property-border rounded-lg shadow-sm">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="font-bold text-property-gold">{hoveredRoom}</span>
+              <span className="font-semibold text-property-navy">{roomName}</span>
+              <span className="text-property-text-light">•</span>
+              <span className="text-property-text-muted">{roomArea} m²</span>
+            </div>
+            <p className="text-sm text-property-text-muted">
+              {descriptions[hoveredRoom]}
+            </p>
           </div>
-          <p className="text-sm text-property-text-muted">
-            {descriptions[hoveredRoom]}
-          </p>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
