@@ -91,6 +91,12 @@ export const en: Dictionary = {
       smallBalcony: "Small Balcony",
       utilities: "WC + Passage + Storage",
       total: "Total",
+      openKitchenLiving: "Open-plan Kitchen + Living",
+      bedroomOffice: "Bedroom + Office",
+    },
+    renovation: {
+      tabCurrent: "Current State",
+      tabRenovated: "Renovation Plan",
     },
     projectionTitle: "Investment Returns",
     projection: {

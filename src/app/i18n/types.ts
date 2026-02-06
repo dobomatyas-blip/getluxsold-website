@@ -80,6 +80,12 @@ export interface Dictionary {
       smallBalcony: string;
       utilities: string;
       total: string;
+      openKitchenLiving: string;
+      bedroomOffice: string;
+    };
+    renovation: {
+      tabCurrent: string;
+      tabRenovated: string;
     };
     projectionTitle: string;
     projection: {

@@ -91,6 +91,12 @@ export const vi: Dictionary = {
       smallBalcony: "Ban công nhỏ",
       utilities: "WC + Hành lang + Kho",
       total: "Tổng cộng",
+      openKitchenLiving: "Bếp mở + Phòng khách",
+      bedroomOffice: "Phòng ngủ + Phòng làm việc",
+    },
+    renovation: {
+      tabCurrent: "Hiện trạng",
+      tabRenovated: "Phương án cải tạo",
     },
     projectionTitle: "Lợi nhuận đầu tư",
     projection: {

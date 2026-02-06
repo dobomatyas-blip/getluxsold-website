@@ -91,6 +91,12 @@ export const de: Dictionary = {
       smallBalcony: "Kleiner Balkon",
       utilities: "WC + Durchgang + Abstellraum",
       total: "Gesamt",
+      openKitchenLiving: "Offene Wohnküche",
+      bedroomOffice: "Schlafzimmer + Büro",
+    },
+    renovation: {
+      tabCurrent: "Aktueller Zustand",
+      tabRenovated: "Renovierungsplan",
     },
     projectionTitle: "Investitionsrendite",
     projection: {

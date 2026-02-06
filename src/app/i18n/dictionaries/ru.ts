@@ -91,6 +91,12 @@ export const ru: Dictionary = {
       smallBalcony: "Малый балкон",
       utilities: "Туалет + Коридор + Кладовая",
       total: "Итого",
+      openKitchenLiving: "Кухня-гостиная",
+      bedroomOffice: "Спальня + Кабинет",
+    },
+    renovation: {
+      tabCurrent: "Текущее состояние",
+      tabRenovated: "План ремонта",
     },
     projectionTitle: "Доходность инвестиций",
     projection: {

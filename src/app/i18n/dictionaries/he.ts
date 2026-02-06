@@ -91,6 +91,12 @@ export const he: Dictionary = {
       smallBalcony: "מרפסת קטנה",
       utilities: "שירותים + מעבר + מחסן",
       total: "סה\"כ",
+      openKitchenLiving: "מטבח אמריקאי + סלון",
+      bedroomOffice: "חדר שינה + משרד",
+    },
+    renovation: {
+      tabCurrent: "מצב נוכחי",
+      tabRenovated: "תוכנית שיפוץ",
     },
     projectionTitle: "תשואה על השקעה",
     projection: {

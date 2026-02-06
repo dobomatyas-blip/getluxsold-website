@@ -1,7 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { Dictionary, Locale } from "../i18n/types";
 import InvestmentProjection from "./InvestmentProjection";
 import FloorPlanSVG from "./FloorPlanSVG";
+import RenovationFloorPlanSVG from "./RenovationFloorPlanSVG";
 
 interface PotentialSectionProps {
   dictionary: Dictionary;
@@ -10,6 +14,7 @@ interface PotentialSectionProps {
 
 export default function PotentialSection({ dictionary, locale }: PotentialSectionProps) {
   const { potential } = dictionary;
+  const [activeTab, setActiveTab] = useState<"current" | "renovated">("current");
 
   return (
     <section id="potential" className="property-section">
@@ -26,15 +31,36 @@ export default function PotentialSection({ dictionary, locale }: PotentialSectio
 
         {/* Floor Plan with Room Details */}
         <div className="grid lg:grid-cols-3 gap-6 mb-12">
-          {/* Floor Plan SVG */}
+          {/* Floor Plan SVG with Tabs */}
           <div className="lg:col-span-2 property-card overflow-hidden">
-            <div className="p-4 bg-property-cream-dark border-b border-property-border">
-              <h3 className="font-semibold text-property-navy">
-                {potential.currentStateTitle}
-              </h3>
+            <div className="flex border-b border-property-border">
+              <button
+                onClick={() => setActiveTab("current")}
+                className={`flex-1 px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+                  activeTab === "current"
+                    ? "bg-property-navy text-white"
+                    : "bg-property-cream-dark text-property-text-muted hover:text-property-navy hover:bg-property-cream-dark/80"
+                }`}
+              >
+                {potential.renovation.tabCurrent}
+              </button>
+              <button
+                onClick={() => setActiveTab("renovated")}
+                className={`flex-1 px-4 py-3 text-sm font-semibold transition-all duration-200 ${
+                  activeTab === "renovated"
+                    ? "bg-property-gold text-white"
+                    : "bg-property-cream-dark text-property-text-muted hover:text-property-gold-dark hover:bg-property-cream-dark/80"
+                }`}
+              >
+                {potential.renovation.tabRenovated}
+              </button>
             </div>
             <div className="p-4 bg-white">
-              <FloorPlanSVG dictionary={dictionary} locale={locale} />
+              {activeTab === "current" ? (
+                <FloorPlanSVG dictionary={dictionary} locale={locale} />
+              ) : (
+                <RenovationFloorPlanSVG dictionary={dictionary} locale={locale} />
+              )}
             </div>
           </div>
 
@@ -59,13 +85,24 @@ export default function PotentialSection({ dictionary, locale }: PotentialSectio
                 icon={<SofaIcon />}
                 highlight
               />
-              <RoomCard
-                code="A3"
-                name={potential.rooms.middleRoom}
-                area="19,8"
-                dimensions="5,83 × 3,43"
-                icon={<BedIcon />}
-              />
+              {activeTab === "current" ? (
+                <RoomCard
+                  code="A3"
+                  name={potential.rooms.middleRoom}
+                  area="19,8"
+                  dimensions="5,83 × 3,43"
+                  icon={<BedIcon />}
+                />
+              ) : (
+                <RoomCard
+                  code="A3"
+                  name={potential.rooms.openKitchenLiving}
+                  area="19,8"
+                  dimensions="5,83 × 3,43"
+                  icon={<KitchenIcon />}
+                  highlight
+                />
+              )}
               <RoomCard
                 code="A4"
                 name={potential.rooms.bathroom}
@@ -96,20 +133,33 @@ export default function PotentialSection({ dictionary, locale }: PotentialSectio
                   <span>3,6 m²</span>
                 </div>
               </div>
-              <RoomCard
-                code="A10"
-                name={potential.rooms.kitchen}
-                area="7,3"
-                dimensions="3,95 × 1,85"
-                icon={<KitchenIcon />}
-              />
-              <RoomCard
-                code="A11"
-                name={potential.rooms.smallRoom}
-                area="7,2"
-                dimensions="4,10 × 1,80"
-                icon={<DeskIcon />}
-              />
+              {activeTab === "current" ? (
+                <>
+                  <RoomCard
+                    code="A10"
+                    name={potential.rooms.kitchen}
+                    area="7,3"
+                    dimensions="3,95 × 1,85"
+                    icon={<KitchenIcon />}
+                  />
+                  <RoomCard
+                    code="A11"
+                    name={potential.rooms.smallRoom}
+                    area="7,2"
+                    dimensions="4,10 × 1,80"
+                    icon={<DeskIcon />}
+                  />
+                </>
+              ) : (
+                <RoomCard
+                  code="A10"
+                  name={potential.rooms.bedroomOffice}
+                  area="14,5"
+                  dimensions="összevont A10+A11"
+                  icon={<BedIcon />}
+                  highlight
+                />
+              )}
               <div className="pt-3 border-t-2 border-property-gold">
                 <div className="flex justify-between items-center">
                   <span className="font-semibold text-property-navy">{potential.rooms.total}</span>

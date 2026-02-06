@@ -91,6 +91,12 @@ export const hu: Dictionary = {
       smallBalcony: "Kis erkély",
       utilities: "WC + Átjáró + Kamra",
       total: "Összesen",
+      openKitchenLiving: "Amerikai konyhás nappali",
+      bedroomOffice: "Hálószoba + Dolgozó",
+    },
+    renovation: {
+      tabCurrent: "Jelenlegi állapot",
+      tabRenovated: "Felújítási terv",
     },
     projectionTitle: "Befektetési megtérülés",
     projection: {

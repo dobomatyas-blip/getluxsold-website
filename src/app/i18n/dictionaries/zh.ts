@@ -91,6 +91,12 @@ export const zh: Dictionary = {
       smallBalcony: "小阳台",
       utilities: "卫生间 + 过道 + 储藏室",
       total: "合计",
+      openKitchenLiving: "开放式厨房客厅",
+      bedroomOffice: "卧室 + 书房",
+    },
+    renovation: {
+      tabCurrent: "当前状态",
+      tabRenovated: "翻新方案",
     },
     projectionTitle: "投资回报预测",
     projection: {
