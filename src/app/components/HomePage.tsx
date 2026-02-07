@@ -4,6 +4,7 @@ import { Locale } from "../i18n/types";
 import HtmlLangSetter from "./HtmlLangSetter";
 import LanguageSwitcher from "./LanguageSwitcher";
 import SellerCTASection from "./SellerCTASection";
+import SocialProofBar from "./SocialProofBar";
 
 // Text logo component matching the FloatingHeader style
 function TextLogo({ className = "" }: { className?: string }) {
@@ -222,6 +223,9 @@ export default function HomePage({ locale }: HomePageProps) {
           ))}
         </div>
       </main>
+
+      {/* Social Proof */}
+      <SocialProofBar locale={locale} />
 
       {/* Seller / Agent Section */}
       <SellerCTASection locale={locale} />

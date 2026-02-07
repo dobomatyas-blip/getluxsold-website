@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Dictionary, Locale } from "../i18n/types";
 import CTAButton from "./CTAButton";
 
@@ -12,11 +13,14 @@ export default function PropertyHero({ dictionary }: PropertyHeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('/images/hero.jpg')`,
-        }}
+      <Image
+        src="/images/hero.jpg"
+        alt="Bem rakpart 26 - Danube panorama view"
+        fill
+        priority
+        className="object-cover object-center"
+        sizes="100vw"
+        quality={85}
       />
 
       {/* Overlay */}

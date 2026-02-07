@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Dictionary, Locale } from "../i18n/types";
 import { trackPropertyInquiry } from "../lib/analytics";
+import { getStoredUtmParams } from "../lib/utm";
 import CTAButton from "./CTAButton";
 
 interface ContactFormProps {
@@ -66,12 +67,15 @@ export default function ContactForm({ dictionary, locale }: ContactFormProps) {
     setErrorMessage("");
 
     try {
+      const utmParams = getStoredUtmParams();
       const response = await fetch("/api/inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           language: locale,
+          ...(utmParams.ref && { referrer: utmParams.ref }),
+          ...(Object.keys(utmParams).length > 0 && { utm: utmParams }),
         }),
       });
 

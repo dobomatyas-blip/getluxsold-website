@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Dictionary, Locale } from "../i18n/types";
 import { trackServiceInquiry } from "../lib/analytics";
+import { getStoredUtmParams } from "../lib/utm";
 import CTAButton from "./CTAButton";
 
 interface AgentCTASectionProps {
@@ -23,6 +24,8 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [referralLink, setReferralLink] = useState<string | null>(null);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,12 +33,14 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
     setError(null);
 
     try {
+      const utmParams = getStoredUtmParams();
       const response = await fetch("/api/service-inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           language: locale,
+          ...(Object.keys(utmParams).length > 0 && { utm: utmParams }),
         }),
       });
 
@@ -44,6 +49,12 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
       }
 
       trackServiceInquiry(locale, formData.propertyType || undefined);
+
+      // Generate referral link from agent name
+      const agentSlug = formData.name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+      const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://getluxsold.com";
+      setReferralLink(`${baseUrl}/properties/bem-rakpart-26?ref=${agentSlug}`);
+
       setIsSuccess(true);
       setFormData({ name: "", email: "", propertyAddress: "", propertyType: "", estimatedValue: "", message: "" });
     } catch {
@@ -170,9 +181,55 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <CheckIcon className="w-6 h-6 text-green-600" />
                 </div>
-                <p className="text-green-800 font-medium">
+                <p className="text-green-800 font-medium mb-4">
                   {agentCta.serviceCard.form.successMessage}
                 </p>
+
+                {/* Referral Link */}
+                {referralLink && (
+                  <div className="mt-4 pt-4 border-t border-green-200">
+                    <p className="text-sm text-property-navy font-medium mb-2">
+                      {locale === "hu" ? "Az Ön egyedi ajánlási linkje:" :
+                       locale === "de" ? "Ihr persönlicher Empfehlungslink:" :
+                       locale === "zh" ? "您的专属推荐链接：" :
+                       locale === "he" ? "קישור ההפניה האישי שלך:" :
+                       locale === "vi" ? "Liên kết giới thiệu cá nhân của bạn:" :
+                       locale === "ru" ? "Ваша персональная реферальная ссылка:" :
+                       "Your personal referral link:"}
+                    </p>
+                    <div className="flex items-center gap-2 bg-white rounded-lg border border-green-300 p-2">
+                      <input
+                        type="text"
+                        readOnly
+                        value={referralLink}
+                        className="flex-1 text-xs text-property-text bg-transparent outline-none truncate"
+                      />
+                      <button
+                        onClick={async () => {
+                          try {
+                            await navigator.clipboard.writeText(referralLink);
+                            setLinkCopied(true);
+                            setTimeout(() => setLinkCopied(false), 2000);
+                          } catch { /* fallback */ }
+                        }}
+                        className="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-md bg-property-gold text-white hover:bg-property-gold-dark transition-colors"
+                      >
+                        {linkCopied
+                          ? (locale === "hu" ? "Másolva!" : locale === "de" ? "Kopiert!" : locale === "zh" ? "已复制!" : locale === "he" ? "הועתק!" : locale === "vi" ? "Đã sao chép!" : locale === "ru" ? "Скопировано!" : "Copied!")
+                          : (locale === "hu" ? "Másolás" : locale === "de" ? "Kopieren" : locale === "zh" ? "复制" : locale === "he" ? "העתק" : locale === "vi" ? "Sao chép" : locale === "ru" ? "Копировать" : "Copy")}
+                      </button>
+                    </div>
+                    <p className="text-xs text-property-text-muted mt-2">
+                      {locale === "hu" ? "Ossza meg ezt a linket ügyfeleivel — minden érdeklődés Önhöz lesz rendelve." :
+                       locale === "de" ? "Teilen Sie diesen Link mit Ihren Kunden — alle Anfragen werden Ihnen zugeordnet." :
+                       locale === "zh" ? "与客户分享此链接——所有询问都将归属于您。" :
+                       locale === "he" ? "שתפו קישור זה עם לקוחותיכם — כל הפניות ישויכו אליכם." :
+                       locale === "vi" ? "Chia sẻ liên kết này với khách hàng — mọi yêu cầu sẽ được gán cho bạn." :
+                       locale === "ru" ? "Поделитесь этой ссылкой с клиентами — все запросы будут привязаны к вам." :
+                       "Share this link with your clients — all inquiries will be attributed to you."}
+                    </p>
+                  </div>
+                )}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 mt-auto">

@@ -75,6 +75,7 @@ export function PropertyJsonLd({
   const schema = {
     "@context": "https://schema.org",
     "@type": "RealEstateListing",
+    additionalType: "https://schema.org/Apartment",
     name,
     description,
     url,
@@ -82,6 +83,12 @@ export function PropertyJsonLd({
     image: images.map((img) =>
       img.startsWith("http") ? img : `${BASE_URL}${img}`
     ),
+    photo: images.map((img) => ({
+      "@type": "ImageObject",
+      url: img.startsWith("http") ? img : `${BASE_URL}${img}`,
+      width: 1200,
+      height: 800,
+    })),
     address: {
       "@type": "PostalAddress",
       streetAddress,
@@ -101,6 +108,8 @@ export function PropertyJsonLd({
       unitCode: "MTK", // Square meters
     },
     numberOfRooms,
+    numberOfBathroomsTotal: 1,
+    yearBuilt: 1900,
     amenityFeature: amenities.map((amenity) => ({
       "@type": "LocationFeatureSpecification",
       name: amenity,
@@ -116,6 +125,7 @@ export function PropertyJsonLd({
       name: "GetLuxSold",
       url: BASE_URL,
     },
+    tourBookingPage: `${url}#contact`,
   };
 
   return (

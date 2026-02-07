@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Locale } from "../i18n/types";
 import { trackServiceInquiry } from "../lib/analytics";
+import { getStoredUtmParams } from "../lib/utm";
 
 interface SellerDictionary {
   title: string;
@@ -252,6 +253,7 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
     setError(null);
 
     try {
+      const utmParams = getStoredUtmParams();
       const response = await fetch("/api/service-inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -259,6 +261,7 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
           ...formData,
           language: locale,
           source: "seller-cta-section",
+          ...(Object.keys(utmParams).length > 0 && { utm: utmParams }),
         }),
       });
 
@@ -328,15 +331,37 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
           {/* Right: Lead capture form */}
           <div className="bg-white rounded-2xl p-8 text-slate-900">
             {isSuccess ? (
-              <div className="text-center py-8">
+              <div className="text-center py-6">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-green-800 font-medium text-lg">
+                <p className="text-green-800 font-medium text-lg mb-4">
                   {dict.form.successMessage}
                 </p>
+
+                {/* Post-submission viral CTA */}
+                <div className="mt-4 pt-4 border-t border-slate-200">
+                  <p className="text-sm text-slate-500 mb-3">
+                    {locale === "hu" ? "Addig is nézze meg élő demo oldalunkat:" :
+                     locale === "de" ? "Sehen Sie sich in der Zwischenzeit unsere Live-Demo an:" :
+                     locale === "zh" ? "同时，请查看我们的在线演示：" :
+                     locale === "he" ? "בינתיים, צפו בהדגמה החיה שלנו:" :
+                     locale === "vi" ? "Trong khi chờ đợi, hãy xem bản demo trực tiếp:" :
+                     locale === "ru" ? "А пока посмотрите наше живое демо:" :
+                     "In the meantime, check out our live demo:"}
+                  </p>
+                  <Link
+                    href={`/properties/bem-rakpart-26${langSuffix}`}
+                    className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 font-medium text-sm transition-colors"
+                  >
+                    {dict.caseStudy.link}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             ) : (
               <>

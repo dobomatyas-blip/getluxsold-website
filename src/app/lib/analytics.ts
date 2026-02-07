@@ -36,3 +36,34 @@ export function trackPropertyInquiry(inquiryType: string, locale: string) {
     language: locale,
   });
 }
+
+// Viral tracking events
+export function trackShare(platform: string, propertySlug: string, locale: string) {
+  trackEvent("share_property", {
+    platform,
+    property_slug: propertySlug,
+    language: locale,
+  });
+}
+
+export function trackReferralVisit(agentId: string, propertySlug: string, locale: string) {
+  trackEvent("referral_visit", {
+    agent_id: agentId,
+    property_slug: propertySlug,
+    language: locale,
+  });
+}
+
+export function trackEmbedView(propertySlug: string, referrerDomain: string) {
+  trackEvent("embed_view", {
+    property_slug: propertySlug,
+    referrer_domain: referrerDomain,
+  });
+}
+
+export function trackQRScan(propertySlug: string, agentId?: string) {
+  trackEvent("qr_scan", {
+    property_slug: propertySlug,
+    ...(agentId && { agent_id: agentId }),
+  });
+}
