@@ -219,6 +219,7 @@ export const zh: Dictionary = {
   agentCta: {
     sectionTitle: "合作伙伴与业主",
     sectionSubtitle: "在奢华房地产领域，人脉关系至关重要。我们为物业业主及其合作伙伴提供高端市场所期望和应得的定制化服务。",
+    spotsCounter: "10个免费名额中还剩7个",
     clientCard: {
       title: "有合格的买家？",
       description: "业主直售——仅在有经过验证的、真诚的买家意向时，才接受经纪人合作。",
@@ -250,6 +251,16 @@ export const zh: Dictionary = {
         nameLabel: "姓名",
         emailLabel: "电子邮箱",
         propertyAddressLabel: "物业地址",
+        propertyTypeLabel: "房产类型",
+        propertyTypes: {
+          apartment: "公寓",
+          house: "别墅",
+          villa: "豪华别墅",
+          penthouse: "顶层公寓",
+          other: "其他",
+        },
+        estimatedValueLabel: "估计价值",
+        estimatedValuePlaceholder: "例如：€500,000",
         messageLabel: "请简要介绍您的物业",
         submitButton: "申请免费服务",
         submitting: "发送中...",

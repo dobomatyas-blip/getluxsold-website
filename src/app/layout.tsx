@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter, Noto_Sans_SC } from "next/font/google";
+import Script from "next/script";
 import "./styles/property.css";
 import DevTools from "./components/DevTools";
 import { OrganizationJsonLd } from "./components/JsonLd";
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 const playfair = Playfair_Display({
   variable: "--font-property-display",
@@ -60,6 +63,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hu" suppressHydrationWarning>
+      {GA_MEASUREMENT_ID && (
+        <head>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_MEASUREMENT_ID}');
+            `}
+          </Script>
+        </head>
+      )}
       <body className={`${playfair.variable} ${inter.variable} ${notoSansSC.variable} property-page`}>
         <OrganizationJsonLd />
         {children}

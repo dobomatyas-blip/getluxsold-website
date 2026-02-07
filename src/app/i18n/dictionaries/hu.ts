@@ -219,6 +219,7 @@ export const hu: Dictionary = {
   agentCta: {
     sectionTitle: "Partnereknek és tulajdonosoknak",
     sectionSubtitle: "A luxus ingatlanok világában a személyes kapcsolat az alapja mindennek. Tulajdonosoknak és partnereiknek olyan személyre szabott szolgáltatást nyújtunk, amit a prémium szegmensben elvárnak és megérdemelnek.",
+    spotsCounter: "Még 7 ingyenes hely a 10-ből",
     clientCard: {
       title: "Van kvalifikált vevője?",
       description: "Közvetlen tulajdonosi értékesítés – közvetítői együttműködésre kizárólag igazolt, komoly vevőjelölt esetén van lehetőség.",
@@ -250,6 +251,16 @@ export const hu: Dictionary = {
         nameLabel: "Név",
         emailLabel: "Email",
         propertyAddressLabel: "Ingatlan címe",
+        propertyTypeLabel: "Ingatlan típusa",
+        propertyTypes: {
+          apartment: "Lakás",
+          house: "Ház",
+          villa: "Villa",
+          penthouse: "Penthouse",
+          other: "Egyéb",
+        },
+        estimatedValueLabel: "Becsült érték",
+        estimatedValuePlaceholder: "pl. €500.000",
         messageLabel: "Mondjon pár szót az ingatlanról",
         submitButton: "Jelentkezem az ingyenes ajánlatra",
         submitting: "Küldés...",

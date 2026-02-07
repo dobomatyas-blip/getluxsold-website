@@ -219,6 +219,7 @@ export const de: Dictionary = {
   agentCta: {
     sectionTitle: "Für Partner & Eigentümer",
     sectionSubtitle: "In der Welt der Luxusimmobilien ist die persönliche Beziehung das Fundament. Wir bieten Eigentümern und ihren Partnern den maßgeschneiderten Service, den sie im Premium-Segment erwarten und verdienen.",
+    spotsCounter: "Noch 7 von 10 kostenlosen Plätzen",
     clientCard: {
       title: "Haben Sie einen qualifizierten Käufer?",
       description: "Direktverkauf vom Eigentümer – Maklerkooperation ist nur mit einem verifizierten, ernsthaften Kaufinteressenten möglich.",
@@ -250,6 +251,16 @@ export const de: Dictionary = {
         nameLabel: "Name",
         emailLabel: "E-Mail",
         propertyAddressLabel: "Immobilienadresse",
+        propertyTypeLabel: "Immobilientyp",
+        propertyTypes: {
+          apartment: "Wohnung",
+          house: "Haus",
+          villa: "Villa",
+          penthouse: "Penthouse",
+          other: "Sonstige",
+        },
+        estimatedValueLabel: "Geschätzter Wert",
+        estimatedValuePlaceholder: "z.B. €500.000",
         messageLabel: "Erzählen Sie uns von der Immobilie",
         submitButton: "Für kostenloses Angebot bewerben",
         submitting: "Wird gesendet...",

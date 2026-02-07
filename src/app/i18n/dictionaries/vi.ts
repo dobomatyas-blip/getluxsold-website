@@ -219,6 +219,7 @@ export const vi: Dictionary = {
   agentCta: {
     sectionTitle: "Dành cho đối tác & chủ sở hữu",
     sectionSubtitle: "Trong thế giới bất động sản cao cấp, kết nối cá nhân là tất cả. Chúng tôi cung cấp cho chủ sở hữu bất động sản và đối tác dịch vụ tùy chỉnh mà họ mong đợi và xứng đáng trong phân khúc cao cấp.",
+    spotsCounter: "Còn 7 trong 10 suất miễn phí",
     clientCard: {
       title: "Có người mua đủ điều kiện?",
       description: "Bán trực tiếp từ chủ sở hữu – hợp tác với đại lý chỉ có thể với người mua đã được xác minh và nghiêm túc.",
@@ -250,6 +251,16 @@ export const vi: Dictionary = {
         nameLabel: "Họ tên",
         emailLabel: "Email",
         propertyAddressLabel: "Địa chỉ bất động sản",
+        propertyTypeLabel: "Loại bất động sản",
+        propertyTypes: {
+          apartment: "Căn hộ",
+          house: "Nhà phố",
+          villa: "Biệt thự",
+          penthouse: "Penthouse",
+          other: "Khác",
+        },
+        estimatedValueLabel: "Giá trị ước tính",
+        estimatedValuePlaceholder: "VD: €500.000",
         messageLabel: "Cho chúng tôi biết về bất động sản",
         submitButton: "Đăng ký ưu đãi miễn phí",
         submitting: "Đang gửi...",

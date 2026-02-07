@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Dictionary, Locale } from "../i18n/types";
+import { trackServiceInquiry } from "../lib/analytics";
 import CTAButton from "./CTAButton";
 
 interface AgentCTASectionProps {
@@ -15,6 +16,8 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
     name: "",
     email: "",
     propertyAddress: "",
+    propertyType: "",
+    estimatedValue: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,8 +43,9 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
         throw new Error("Failed to submit");
       }
 
+      trackServiceInquiry(locale, formData.propertyType || undefined);
       setIsSuccess(true);
-      setFormData({ name: "", email: "", propertyAddress: "", message: "" });
+      setFormData({ name: "", email: "", propertyAddress: "", propertyType: "", estimatedValue: "", message: "" });
     } catch {
       setError(agentCta.serviceCard.form.errorMessage);
     } finally {
@@ -54,6 +58,10 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-property-gold/10 text-property-gold-dark text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+            <SparklesIcon className="w-4 h-4" />
+            {agentCta.spotsCounter}
+          </div>
           <h2 className="property-heading text-3xl md:text-4xl lg:text-5xl mb-4">
             {agentCta.sectionTitle}
           </h2>
@@ -205,6 +213,38 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
                     onChange={(e) => setFormData({ ...formData, propertyAddress: e.target.value })}
                     className="w-full px-4 py-2 border border-property-border rounded-lg focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
                   />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-sm font-medium text-property-navy mb-1">
+                      {agentCta.serviceCard.form.propertyTypeLabel}
+                    </label>
+                    <select
+                      value={formData.propertyType}
+                      onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
+                      className="w-full px-4 py-2 border border-property-border rounded-lg focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
+                    >
+                      <option value="">&mdash;</option>
+                      <option value="apartment">{agentCta.serviceCard.form.propertyTypes.apartment}</option>
+                      <option value="house">{agentCta.serviceCard.form.propertyTypes.house}</option>
+                      <option value="villa">{agentCta.serviceCard.form.propertyTypes.villa}</option>
+                      <option value="penthouse">{agentCta.serviceCard.form.propertyTypes.penthouse}</option>
+                      <option value="other">{agentCta.serviceCard.form.propertyTypes.other}</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-property-navy mb-1">
+                      {agentCta.serviceCard.form.estimatedValueLabel}
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.estimatedValue}
+                      onChange={(e) => setFormData({ ...formData, estimatedValue: e.target.value })}
+                      placeholder={agentCta.serviceCard.form.estimatedValuePlaceholder}
+                      className="w-full px-4 py-2 border border-property-border rounded-lg focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
+                    />
+                  </div>
                 </div>
 
                 <div>

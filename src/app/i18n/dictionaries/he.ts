@@ -219,6 +219,7 @@ export const he: Dictionary = {
   agentCta: {
     sectionTitle: "לשותפים ובעלי נכסים",
     sectionSubtitle: "בעולם הנדל\"ן היוקרתי, הקשר האישי הוא הכל. אנו מספקים לבעלי נכסים ולשותפיהם שירות מותאם אישית כפי שמצפים וראויים לו בפלח הפרימיום.",
+    spotsCounter: "נותרו 7 מתוך 10 מקומות חינמיים",
     clientCard: {
       title: "יש לך קונה מתאים?",
       description: "מכירה ישירה מהבעלים – שיתוף פעולה עם סוכנים אפשרי רק עם קונה מאומת ורציני.",
@@ -250,6 +251,16 @@ export const he: Dictionary = {
         nameLabel: "שם",
         emailLabel: "דוא\"ל",
         propertyAddressLabel: "כתובת הנכס",
+        propertyTypeLabel: "סוג הנכס",
+        propertyTypes: {
+          apartment: "דירה",
+          house: "בית",
+          villa: "וילה",
+          penthouse: "פנטהאוז",
+          other: "אחר",
+        },
+        estimatedValueLabel: "ערך משוער",
+        estimatedValuePlaceholder: "למשל €500,000",
         messageLabel: "ספר לנו על הנכס",
         submitButton: "הגש בקשה להצעה החינמית",
         submitting: "שולח...",

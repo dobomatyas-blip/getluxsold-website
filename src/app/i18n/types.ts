@@ -165,6 +165,7 @@ export interface Dictionary {
   agentCta: {
     sectionTitle: string;
     sectionSubtitle: string;
+    spotsCounter: string;
     clientCard: {
       title: string;
       description: string;
@@ -186,6 +187,16 @@ export interface Dictionary {
         nameLabel: string;
         emailLabel: string;
         propertyAddressLabel: string;
+        propertyTypeLabel: string;
+        propertyTypes: {
+          apartment: string;
+          house: string;
+          villa: string;
+          penthouse: string;
+          other: string;
+        };
+        estimatedValueLabel: string;
+        estimatedValuePlaceholder: string;
         messageLabel: string;
         submitButton: string;
         submitting: string;

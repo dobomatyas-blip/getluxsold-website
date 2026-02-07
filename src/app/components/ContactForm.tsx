@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Dictionary, Locale } from "../i18n/types";
+import { trackPropertyInquiry } from "../lib/analytics";
 import CTAButton from "./CTAButton";
 
 interface ContactFormProps {
@@ -78,6 +79,7 @@ export default function ContactForm({ dictionary, locale }: ContactFormProps) {
         throw new Error("Failed to submit");
       }
 
+      trackPropertyInquiry(formData.inquiryType, locale);
       setStatus("success");
       setFormData({
         name: "",

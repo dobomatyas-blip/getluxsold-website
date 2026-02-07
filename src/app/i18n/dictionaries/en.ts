@@ -219,6 +219,7 @@ export const en: Dictionary = {
   agentCta: {
     sectionTitle: "For partners & owners",
     sectionSubtitle: "In the world of luxury real estate, personal connection is everything. We provide property owners and their partners with the bespoke service they expect and deserve in the premium segment.",
+    spotsCounter: "7 of 10 free spots remaining",
     clientCard: {
       title: "Have a qualified buyer?",
       description: "Direct owner sale – agent cooperation is only possible with a verified, serious buyer prospect.",
@@ -250,6 +251,16 @@ export const en: Dictionary = {
         nameLabel: "Name",
         emailLabel: "Email",
         propertyAddressLabel: "Property address",
+        propertyTypeLabel: "Property type",
+        propertyTypes: {
+          apartment: "Apartment",
+          house: "House",
+          villa: "Villa",
+          penthouse: "Penthouse",
+          other: "Other",
+        },
+        estimatedValueLabel: "Estimated value",
+        estimatedValuePlaceholder: "e.g. €500,000",
         messageLabel: "Tell us about the property",
         submitButton: "Apply for free offer",
         submitting: "Sending...",

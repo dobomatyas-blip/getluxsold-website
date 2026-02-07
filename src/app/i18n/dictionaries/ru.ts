@@ -219,6 +219,7 @@ export const ru: Dictionary = {
   agentCta: {
     sectionTitle: "Для партнёров и собственников",
     sectionSubtitle: "В мире элитной недвижимости личные отношения — это всё. Мы предоставляем собственникам и их партнёрам индивидуальный сервис, которого ожидают и заслуживают в премиальном сегменте.",
+    spotsCounter: "Осталось 7 из 10 бесплатных мест",
     clientCard: {
       title: "Есть квалифицированный покупатель?",
       description: "Прямая продажа от собственника — сотрудничество с агентами возможно только при наличии проверенного, серьёзного покупателя.",
@@ -250,6 +251,16 @@ export const ru: Dictionary = {
         nameLabel: "Имя",
         emailLabel: "Электронная почта",
         propertyAddressLabel: "Адрес объекта",
+        propertyTypeLabel: "Тип недвижимости",
+        propertyTypes: {
+          apartment: "Квартира",
+          house: "Дом",
+          villa: "Вилла",
+          penthouse: "Пентхаус",
+          other: "Другое",
+        },
+        estimatedValueLabel: "Оценочная стоимость",
+        estimatedValuePlaceholder: "напр. €500 000",
         messageLabel: "Расскажите нам об объекте",
         submitButton: "Подать заявку на бесплатное предложение",
         submitting: "Отправка...",
