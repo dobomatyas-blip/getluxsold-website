@@ -9,6 +9,7 @@ import ProcessSection from "./ProcessSection";
 import TestimonialsSection from "./TestimonialsSection";
 import ContactForm from "./ContactForm";
 import AgentCTASection from "./AgentCTASection";
+import SellerCTASection from "./SellerCTASection";
 import PropertyFooter from "./PropertyFooter";
 import HtmlLangSetter from "./HtmlLangSetter";
 import DirectionWrapper from "./DirectionWrapper";
@@ -33,6 +34,7 @@ export default function PropertyPage({ dictionary, locale, basePath }: PropertyP
       <TestimonialsSection dictionary={dictionary} />
       <ContactForm dictionary={dictionary} locale={locale} />
       <AgentCTASection dictionary={dictionary} locale={locale} />
+      <SellerCTASection locale={locale} showCaseStudy={false} />
       <PropertyFooter dictionary={dictionary} />
     </DirectionWrapper>
   );
