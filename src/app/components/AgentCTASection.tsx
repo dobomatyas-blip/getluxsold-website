@@ -84,10 +84,10 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
         {/* Two Cards */}
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Client Card */}
-          <div className="property-card p-8 flex flex-col border-2 border-property-navy/20">
+          <div className="property-card p-8 flex flex-col border-2 border-property-gold/20">
             {/* Header with icon */}
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-property-navy rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-property-gold rounded-full flex items-center justify-center">
                 <ShieldCheckIcon className="w-6 h-6 text-white" />
               </div>
               <h3 className="property-subheading text-xl">
@@ -96,21 +96,21 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
             </div>
 
             {/* Important notice banner */}
-            <div className="bg-property-navy/5 border-l-4 border-property-navy rounded-r-lg p-4 mb-6">
-              <p className="text-property-navy font-medium text-sm leading-relaxed">
+            <div className="bg-property-gold/5 border-l-4 border-property-gold rounded-r-lg p-4 mb-6">
+              <p className="text-property-text font-medium text-sm leading-relaxed">
                 {agentCta.clientCard.description}
               </p>
             </div>
 
             {/* Requirements */}
             <div className="mb-6">
-              <p className="text-sm font-semibold text-property-navy mb-3 uppercase tracking-wide">
+              <p className="text-sm font-semibold text-property-gold mb-3 uppercase tracking-wide">
                 {agentCta.clientCard.requirementsTitle}
               </p>
               <ul className="space-y-2">
                 {agentCta.clientCard.requirements.map((req, index) => (
                   <li key={index} className="flex items-start gap-2 text-sm text-property-text-muted">
-                    <CheckCircleIcon className="w-5 h-5 text-property-navy flex-shrink-0 mt-0.5" />
+                    <CheckCircleIcon className="w-5 h-5 text-property-gold flex-shrink-0 mt-0.5" />
                     <span>{req}</span>
                   </li>
                 ))}
@@ -118,7 +118,7 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
             </div>
 
             {/* Note */}
-            <div className="bg-property-cream-dark rounded-lg p-4 mb-6">
+            <div className="bg-property-bg-primary rounded-lg p-4 mb-6">
               <p className="text-sm text-property-text-muted">
                 {agentCta.clientCard.note}
               </p>
@@ -177,18 +177,18 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
 
             {/* Form */}
             {isSuccess ? (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CheckIcon className="w-6 h-6 text-green-600" />
+              <div className="bg-green-900/20 border border-green-800/30 rounded-lg p-6 text-center">
+                <div className="w-12 h-12 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <CheckIcon className="w-6 h-6 text-green-400" />
                 </div>
-                <p className="text-green-800 font-medium mb-4">
+                <p className="text-green-400 font-medium mb-4">
                   {agentCta.serviceCard.form.successMessage}
                 </p>
 
                 {/* Referral Link */}
                 {referralLink && (
-                  <div className="mt-4 pt-4 border-t border-green-200">
-                    <p className="text-sm text-property-navy font-medium mb-2">
+                  <div className="mt-4 pt-4 border-t border-green-800/30">
+                    <p className="text-sm text-property-gold font-medium mb-2">
                       {locale === "hu" ? "Az Ön egyedi ajánlási linkje:" :
                        locale === "de" ? "Ihr persönlicher Empfehlungslink:" :
                        locale === "zh" ? "您的专属推荐链接：" :
@@ -197,7 +197,7 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
                        locale === "ru" ? "Ваша персональная реферальная ссылка:" :
                        "Your personal referral link:"}
                     </p>
-                    <div className="flex items-center gap-2 bg-white rounded-lg border border-green-300 p-2">
+                    <div className="flex items-center gap-2 bg-property-bg-elevated rounded-lg border border-green-800/30 p-2">
                       <input
                         type="text"
                         readOnly
@@ -234,7 +234,7 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 mt-auto">
                 <div>
-                  <label className="block text-sm font-medium text-property-navy mb-1">
+                  <label className="block text-sm font-medium text-property-text mb-1">
                     {agentCta.serviceCard.form.nameLabel} *
                   </label>
                   <input
@@ -242,12 +242,12 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2 border border-property-border rounded-lg focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
+                    className="w-full px-4 py-2 border border-property-border rounded-lg bg-property-bg-elevated text-property-text focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-property-navy mb-1">
+                  <label className="block text-sm font-medium text-property-text mb-1">
                     {agentCta.serviceCard.form.emailLabel} *
                   </label>
                   <input
@@ -255,12 +255,12 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2 border border-property-border rounded-lg focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
+                    className="w-full px-4 py-2 border border-property-border rounded-lg bg-property-bg-elevated text-property-text focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-property-navy mb-1">
+                  <label className="block text-sm font-medium text-property-text mb-1">
                     {agentCta.serviceCard.form.propertyAddressLabel} *
                   </label>
                   <input
@@ -268,19 +268,19 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
                     required
                     value={formData.propertyAddress}
                     onChange={(e) => setFormData({ ...formData, propertyAddress: e.target.value })}
-                    className="w-full px-4 py-2 border border-property-border rounded-lg focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
+                    className="w-full px-4 py-2 border border-property-border rounded-lg bg-property-bg-elevated text-property-text focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-medium text-property-navy mb-1">
+                    <label className="block text-sm font-medium text-property-text mb-1">
                       {agentCta.serviceCard.form.propertyTypeLabel}
                     </label>
                     <select
                       value={formData.propertyType}
                       onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                      className="w-full px-4 py-2 border border-property-border rounded-lg focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
+                      className="w-full px-4 py-2 border border-property-border rounded-lg bg-property-bg-elevated text-property-text focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
                     >
                       <option value="">&mdash;</option>
                       <option value="apartment">{agentCta.serviceCard.form.propertyTypes.apartment}</option>
@@ -291,7 +291,7 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-property-navy mb-1">
+                    <label className="block text-sm font-medium text-property-text mb-1">
                       {agentCta.serviceCard.form.estimatedValueLabel}
                     </label>
                     <input
@@ -299,25 +299,25 @@ export default function AgentCTASection({ dictionary, locale }: AgentCTASectionP
                       value={formData.estimatedValue}
                       onChange={(e) => setFormData({ ...formData, estimatedValue: e.target.value })}
                       placeholder={agentCta.serviceCard.form.estimatedValuePlaceholder}
-                      className="w-full px-4 py-2 border border-property-border rounded-lg focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
+                      className="w-full px-4 py-2 border border-property-border rounded-lg bg-property-bg-elevated text-property-text focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-property-navy mb-1">
+                  <label className="block text-sm font-medium text-property-text mb-1">
                     {agentCta.serviceCard.form.messageLabel}
                   </label>
                   <textarea
                     rows={3}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-2 border border-property-border rounded-lg focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all resize-none"
+                    className="w-full px-4 py-2 border border-property-border rounded-lg bg-property-bg-elevated text-property-text focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all resize-none"
                   />
                 </div>
 
                 {error && (
-                  <p className="text-red-600 text-sm">{error}</p>
+                  <p className="text-red-400 text-sm">{error}</p>
                 )}
 
                 <button

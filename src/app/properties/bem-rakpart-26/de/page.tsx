@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { de } from "../../../i18n/dictionaries";
 import PropertyPage from "../../../components/PropertyPage";
 import { PropertyJsonLd, BreadcrumbJsonLd } from "../../../components/JsonLd";
+import { bemRakpart26 } from "../../../data/properties/bem-rakpart-26";
 
 export const metadata: Metadata = {
   title: de.meta.title,
@@ -66,7 +67,7 @@ export default function BemRakpartGermanPage() {
           { name: "Bem rakpart 26", url: "https://getluxsold.com/properties/bem-rakpart-26/de" },
         ]}
       />
-      <PropertyPage dictionary={de} locale="de" basePath="/properties/bem-rakpart-26" />
+      <PropertyPage dictionary={de} locale="de" basePath="/properties/bem-rakpart-26" propertyData={bemRakpart26} />
     </>
   );
 }

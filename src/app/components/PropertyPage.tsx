@@ -1,6 +1,10 @@
 import { Dictionary, Locale } from "../i18n/types";
+import { PropertyData } from "../data/properties/types";
 import FloatingHeader from "./FloatingHeader";
 import PropertyHero from "./PropertyHero";
+import PropertyKeyFacts from "./PropertyKeyFacts";
+import PropertyFeatures from "./PropertyFeatures";
+import PropertyDetailsTable from "./PropertyDetailsTable";
 import OpportunitySection from "./OpportunitySection";
 import ViewsGallery from "./ViewsGallery";
 import LocationMap from "./LocationMap";
@@ -23,9 +27,10 @@ interface PropertyPageProps {
   locale: Locale;
   basePath?: string;
   propertySlug?: string;
+  propertyData: PropertyData;
 }
 
-export default function PropertyPage({ dictionary, locale, basePath, propertySlug = "bem-rakpart-26" }: PropertyPageProps) {
+export default function PropertyPage({ dictionary, locale, basePath, propertySlug = "bem-rakpart-26", propertyData }: PropertyPageProps) {
   return (
     <DirectionWrapper locale={locale}>
       <HtmlLangSetter locale={locale} />
@@ -33,8 +38,20 @@ export default function PropertyPage({ dictionary, locale, basePath, propertySlu
       <AgentBrandBanner locale={locale} />
       <FloatingHeader locale={locale} basePath={basePath} />
       <PropertyHero dictionary={dictionary} locale={locale} />
+      <PropertyKeyFacts dictionary={dictionary} property={propertyData} />
       <ShareBar propertySlug={propertySlug} locale={locale} propertyTitle={dictionary.hero.headline} />
       <OpportunitySection dictionary={dictionary} />
+
+      {/* Property Details & Features Section */}
+      <section className="property-section property-section-alt">
+        <div className="max-w-5xl mx-auto">
+          <PropertyDetailsTable dictionary={dictionary} property={propertyData} />
+          <div className="mt-12">
+            <PropertyFeatures dictionary={dictionary} property={propertyData} />
+          </div>
+        </div>
+      </section>
+
       <ViewsGallery dictionary={dictionary} />
       <LocationMap dictionary={dictionary} />
       <PotentialSection dictionary={dictionary} locale={locale} />

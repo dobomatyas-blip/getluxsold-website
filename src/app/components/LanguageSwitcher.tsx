@@ -49,7 +49,7 @@ export default function LanguageSwitcher({ currentLocale, isScrolled = false, ba
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-colors backdrop-blur-sm ${
           isScrolled
-            ? "bg-property-navy/5 text-property-navy hover:bg-property-navy/10"
+            ? "bg-property-bg-elevated text-property-gold hover:bg-property-bg-elevated/80"
             : "bg-white/10 text-white hover:bg-white/20"
         }`}
       >
@@ -65,20 +65,20 @@ export default function LanguageSwitcher({ currentLocale, isScrolled = false, ba
       </button>
 
       {isOpen && (
-        <div className="absolute end-0 top-full mt-2 bg-white rounded-lg shadow-lg py-1 min-w-[160px] z-50 border border-gray-100">
+        <div className="absolute end-0 top-full mt-2 bg-property-bg-secondary rounded-lg shadow-lg py-1 min-w-[160px] z-50 border border-property-border">
           {languages.map(({ locale, label, nativeName }) => (
             <Link
               key={locale}
               href={getLocalePath(locale, basePath)}
-              className={`block px-4 py-2 text-sm transition-colors hover:bg-gray-50 ${
+              className={`block px-4 py-2 text-sm transition-colors hover:bg-property-bg-elevated ${
                 currentLocale === locale
                   ? "text-property-gold font-medium"
-                  : "text-gray-700 hover:text-gray-900"
+                  : "text-property-text-muted hover:text-property-text"
               }`}
               onClick={() => setIsOpen(false)}
             >
               <span className="font-medium">{label}</span>
-              <span className="mx-1.5 text-gray-300">·</span>
+              <span className="mx-1.5 text-property-text-light">·</span>
               <span>{nativeName}</span>
             </Link>
           ))}

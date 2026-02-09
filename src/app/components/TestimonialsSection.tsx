@@ -57,7 +57,7 @@ export default function TestimonialsSection({ dictionary }: TestimonialsSectionP
 
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-3 px-6 py-3 bg-property-navy text-white rounded-full">
+    <div className="flex items-center gap-3 px-6 py-3 bg-property-gold/10 border border-property-gold/30 text-property-text rounded-full">
       <span className="text-property-gold">{icon}</span>
       <span className="font-medium">{text}</span>
     </div>

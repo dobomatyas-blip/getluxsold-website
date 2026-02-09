@@ -63,13 +63,13 @@ export default function InvestmentProjection({ dictionary }: InvestmentProjectio
       </p>
 
       {/* Investment Summary */}
-      <div className="bg-property-cream-dark rounded-lg p-5 mb-8">
+      <div className="bg-property-bg-primary rounded-lg p-5 mb-8">
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
             <div className="text-xs text-property-text-muted uppercase tracking-wide mb-1">
               {potential.projection.acquisitionLabel}
             </div>
-            <div className="font-semibold text-property-navy">
+            <div className="font-semibold text-property-text">
               {formatCurrency(ACQUISITION_COST)}
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function InvestmentProjection({ dictionary }: InvestmentProjectio
             <div className="text-xs text-property-text-muted uppercase tracking-wide mb-1">
               {potential.projection.renovationLabel}
             </div>
-            <div className="font-semibold text-property-navy">
+            <div className="font-semibold text-property-text">
               {formatCurrency(RENOVATION_COST)}
             </div>
           </div>
@@ -99,8 +99,8 @@ export default function InvestmentProjection({ dictionary }: InvestmentProjectio
             key={proj.years}
             className={`rounded-lg p-5 ${
               proj.years === 5
-                ? "bg-property-navy text-white"
-                : "bg-property-cream-dark"
+                ? "bg-property-bg-elevated text-white border border-property-gold/30"
+                : "bg-property-bg-primary border border-property-border"
             }`}
           >
             {/* Year Header */}
@@ -130,7 +130,7 @@ export default function InvestmentProjection({ dictionary }: InvestmentProjectio
                 <span className={proj.years === 5 ? "text-white/70" : "text-property-text-muted"}>
                   {potential.projection.capitalGainLabel}
                 </span>
-                <span className="font-medium text-green-600">
+                <span className="font-medium text-green-400">
                   +{formatCurrency(proj.capitalGain)}
                 </span>
               </div>
@@ -150,7 +150,7 @@ export default function InvestmentProjection({ dictionary }: InvestmentProjectio
                 <span className={proj.years === 5 ? "text-white/70" : "text-property-text-muted"}>
                   {potential.projection.totalReturnLabel}
                 </span>
-                <span className={`font-bold ${proj.years === 5 ? "text-property-gold" : "text-green-600"}`}>
+                <span className={`font-bold ${proj.years === 5 ? "text-property-gold" : "text-green-400"}`}>
                   +{formatCurrency(proj.totalReturn)}
                 </span>
               </div>
@@ -160,7 +160,7 @@ export default function InvestmentProjection({ dictionary }: InvestmentProjectio
             <div className={`mt-4 pt-3 border-t text-center ${
               proj.years === 5 ? "border-white/20" : "border-property-border"
             }`}>
-              <div className={`text-2xl font-bold ${proj.years === 5 ? "text-property-gold" : "text-property-navy"}`}>
+              <div className={`text-2xl font-bold ${proj.years === 5 ? "text-property-gold" : "text-property-gold-light"}`}>
                 +{proj.roi}%
               </div>
               <div className={`text-xs ${proj.years === 5 ? "text-white/70" : "text-property-text-muted"}`}>
@@ -172,7 +172,7 @@ export default function InvestmentProjection({ dictionary }: InvestmentProjectio
       </div>
 
       {/* Assumptions */}
-      <div className="text-xs text-property-text-light p-4 bg-property-cream-dark rounded-lg">
+      <div className="text-xs text-property-text-light p-4 bg-property-bg-primary rounded-lg">
         <div className="font-semibold mb-2">{potential.projection.assumptions}</div>
         <ul className="space-y-1 list-disc list-inside">
           <li>{potential.projection.appreciationNote}</li>

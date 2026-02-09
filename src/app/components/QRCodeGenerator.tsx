@@ -53,8 +53,8 @@ export default function QRCodeGenerator({ url, locale, size = 200 }: QRCodeGener
 
   return (
     <div className="text-center">
-      <p className="text-sm font-medium text-property-navy mb-3">{t.title}</p>
-      <div className="inline-block bg-white p-3 rounded-lg shadow-sm border border-property-border">
+      <p className="text-sm font-medium text-property-gold mb-3">{t.title}</p>
+      <div className="inline-block bg-property-bg-elevated p-3 rounded-lg border border-property-border">
         <canvas ref={canvasRef} />
       </div>
       <p className="text-xs text-property-text-muted mt-2 mb-3">{t.description}</p>

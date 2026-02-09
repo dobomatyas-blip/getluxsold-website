@@ -54,8 +54,8 @@ export default function ViewsGallery({ dictionary }: ViewsGalleryProps) {
 
         {/* 360° Panorama */}
         <div className="property-card overflow-hidden mb-12">
-          <div className="p-4 bg-property-cream-dark border-b border-property-border">
-            <h3 className="font-semibold text-property-navy">
+          <div className="p-4 bg-property-bg-secondary border-b border-property-border">
+            <h3 className="font-semibold text-property-gold">
               {views.panoramaTitle}
             </h3>
           </div>
@@ -87,7 +87,7 @@ export default function ViewsGallery({ dictionary }: ViewsGalleryProps) {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-property-navy/0 group-hover:bg-property-navy/30 transition-colors duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-property-bg-primary/0 group-hover:bg-property-bg-primary/50 transition-colors duration-300 flex items-center justify-center">
                   <ExpandIcon className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </button>

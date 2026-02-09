@@ -270,7 +270,7 @@ export default function ContactForm({ dictionary, locale }: ContactFormProps) {
 
           {/* Error Message */}
           {status === "error" && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded text-red-700 text-sm">
+            <div className="mb-6 p-4 bg-red-900/20 border border-red-800/30 rounded text-red-400 text-sm">
               {errorMessage}
             </div>
           )}

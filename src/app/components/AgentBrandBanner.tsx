@@ -40,8 +40,8 @@ export default function AgentBrandBanner({ locale }: AgentBrandBannerProps) {
   if (!agentName) return null;
 
   return (
-    <div className="bg-property-navy/95 text-white py-2 px-4 text-center text-sm z-50 relative">
-      <span className="text-white/60">{presentedByTexts[locale]}</span>{" "}
+    <div className="bg-property-bg-primary text-white py-2 px-4 text-center text-sm z-50 relative border-b border-property-border">
+      <span className="text-property-text-muted">{presentedByTexts[locale]}</span>{" "}
       <span className="font-semibold text-property-gold">{agentName}</span>
     </div>
   );

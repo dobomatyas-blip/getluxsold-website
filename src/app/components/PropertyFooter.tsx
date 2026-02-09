@@ -10,7 +10,7 @@ export default function PropertyFooter({ dictionary }: PropertyFooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-property-navy text-white py-12">
+    <footer className="bg-property-bg-primary text-white py-12 border-t border-property-border">
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Company Info */}

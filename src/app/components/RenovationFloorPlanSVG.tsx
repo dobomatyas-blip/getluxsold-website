@@ -256,16 +256,16 @@ export default function RenovationFloorPlanSVG({ dictionary, locale }: Renovatio
 
   // Color scheme aligned with property design
   const colors = {
-    background: "#faf9f7",
-    roomFill: "#f0eeea",
-    roomHover: "#d4af37",
-    stroke: "#e5e3df",
-    strokeHover: "#d4af37",
-    textPrimary: "#1a365d",
-    textSecondary: "#6b6b6b",
-    compass: "#94a3b8",
+    background: "#0e1624",
+    roomFill: "#121a2a",
+    roomHover: "#c9a84c",
+    stroke: "#1e2a3e",
+    strokeHover: "#c9a84c",
+    textPrimary: "#eae6de",
+    textSecondary: "#8a9ab0",
+    compass: "#5a6a80",
     danube: "#3b82f6",
-    renovationAccent: "#d4af37",
+    renovationAccent: "#c9a84c",
   };
 
   return (
@@ -342,7 +342,7 @@ export default function RenovationFloorPlanSVG({ dictionary, locale }: Renovatio
             x="575"
             y="224"
             textAnchor="middle"
-            fill={hoveredRoom === "A10" ? "#1a365d" : colors.textPrimary}
+            fill={hoveredRoom === "A10" ? "#0c1220" : colors.textPrimary}
             fontSize="13"
             fontWeight="600"
             className="pointer-events-none select-none transition-all duration-200"
@@ -353,7 +353,7 @@ export default function RenovationFloorPlanSVG({ dictionary, locale }: Renovatio
             x="575"
             y="240"
             textAnchor="middle"
-            fill={hoveredRoom === "A10" ? "#1a365d" : colors.textSecondary}
+            fill={hoveredRoom === "A10" ? "#0c1220" : colors.textSecondary}
             fontSize="11"
             className="pointer-events-none select-none transition-all duration-200"
           >
@@ -390,7 +390,7 @@ export default function RenovationFloorPlanSVG({ dictionary, locale }: Renovatio
                 x={room.labelX}
                 y={room.labelY - 6}
                 textAnchor="middle"
-                fill={isHovered ? "#1a365d" : colors.textPrimary}
+                fill={isHovered ? "#0c1220" : colors.textPrimary}
                 fontSize={isSmall ? "10" : "13"}
                 fontWeight="600"
                 className="pointer-events-none select-none transition-all duration-200"
@@ -403,7 +403,7 @@ export default function RenovationFloorPlanSVG({ dictionary, locale }: Renovatio
                 x={room.labelX}
                 y={room.labelY + 10}
                 textAnchor="middle"
-                fill={isHovered ? "#1a365d" : colors.textSecondary}
+                fill={isHovered ? "#0c1220" : colors.textSecondary}
                 fontSize={isSmall ? "8" : "11"}
                 className="pointer-events-none select-none transition-all duration-200"
               >
@@ -446,10 +446,10 @@ export default function RenovationFloorPlanSVG({ dictionary, locale }: Renovatio
         const roomArea = hoveredRoom === "A10" ? "14.5" : foundRoom?.area;
 
         return (
-          <div className="mt-4 p-4 bg-white border border-property-border rounded-lg shadow-sm">
+          <div className="mt-4 p-4 bg-property-bg-secondary border border-property-border rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <span className="font-bold text-property-gold">{hoveredRoom}</span>
-              <span className="font-semibold text-property-navy">{roomName}</span>
+              <span className="font-semibold text-property-text">{roomName}</span>
               <span className="text-property-text-light">•</span>
               <span className="text-property-text-muted">{roomArea} m²</span>
             </div>

@@ -280,12 +280,12 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
   };
 
   return (
-    <section id="sellers" className="bg-slate-900 text-white py-20">
+    <section id="sellers" className="bg-property-bg-surface-alt text-white py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: Value proposition */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-amber-500/20 text-amber-400 text-sm font-medium px-3 py-1 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 bg-property-gold/20 text-property-gold text-sm font-medium px-3 py-1 rounded-full mb-6">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
               </svg>
@@ -295,7 +295,7 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-[family-name:var(--font-property-display)]">
               {dict.title}
             </h2>
-            <p className="text-lg text-slate-300 mb-8">
+            <p className="text-lg text-property-text-muted mb-8">
               {dict.subtitle}
             </p>
 
@@ -303,21 +303,21 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
             <ul className="space-y-4 mb-8">
               {dict.benefits.map((benefit, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-property-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
-                  <span className="text-slate-200">{benefit}</span>
+                  <span className="text-property-text">{benefit}</span>
                 </li>
               ))}
             </ul>
 
             {/* Case study link */}
             {showCaseStudy && (
-              <div className="bg-white/5 border border-white/10 rounded-xl p-5">
-                <p className="text-sm text-slate-400 mb-2">{dict.caseStudy.label}</p>
+              <div className="bg-property-bg-elevated/50 border border-property-border rounded-xl p-5">
+                <p className="text-sm text-property-text-muted mb-2">{dict.caseStudy.label}</p>
                 <Link
                   href={`/properties/bem-rakpart-26${langSuffix}`}
-                  className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-medium transition-colors"
+                  className="inline-flex items-center gap-2 text-property-gold hover:text-property-gold-light font-medium transition-colors"
                 >
                   {dict.caseStudy.link}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -329,21 +329,21 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
           </div>
 
           {/* Right: Lead capture form */}
-          <div className="bg-white rounded-2xl p-8 text-slate-900">
+          <div className="bg-property-bg-secondary rounded-2xl p-8 text-property-text border border-property-border">
             {isSuccess ? (
               <div className="text-center py-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-green-800 font-medium text-lg mb-4">
+                <p className="text-green-400 font-medium text-lg mb-4">
                   {dict.form.successMessage}
                 </p>
 
                 {/* Post-submission viral CTA */}
-                <div className="mt-4 pt-4 border-t border-slate-200">
-                  <p className="text-sm text-slate-500 mb-3">
+                <div className="mt-4 pt-4 border-t border-property-border">
+                  <p className="text-sm text-property-text-muted mb-3">
                     {locale === "hu" ? "Addig is nézze meg élő demo oldalunkat:" :
                      locale === "de" ? "Sehen Sie sich in der Zwischenzeit unsere Live-Demo an:" :
                      locale === "zh" ? "同时，请查看我们的在线演示：" :
@@ -354,7 +354,7 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
                   </p>
                   <Link
                     href={`/properties/bem-rakpart-26${langSuffix}`}
-                    className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 font-medium text-sm transition-colors"
+                    className="inline-flex items-center gap-2 text-property-gold hover:text-property-gold-light font-medium text-sm transition-colors"
                   >
                     {dict.caseStudy.link}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -368,7 +368,7 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
                 <h3 className="text-xl font-bold mb-6">{dict.cta}</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-medium text-property-text-muted mb-1">
                       {dict.form.nameLabel} *
                     </label>
                     <input
@@ -377,12 +377,12 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={dict.form.namePlaceholder}
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-property-border rounded-lg bg-property-bg-elevated text-property-text focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-medium text-property-text-muted mb-1">
                       {dict.form.emailLabel} *
                     </label>
                     <input
@@ -391,12 +391,12 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder={dict.form.emailPlaceholder}
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-property-border rounded-lg bg-property-bg-elevated text-property-text focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-medium text-property-text-muted mb-1">
                       {dict.form.propertyAddressLabel} *
                     </label>
                     <input
@@ -405,18 +405,18 @@ export default function SellerCTASection({ locale, showCaseStudy = true }: Selle
                       value={formData.propertyAddress}
                       onChange={(e) => setFormData({ ...formData, propertyAddress: e.target.value })}
                       placeholder={dict.form.propertyAddressPlaceholder}
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 outline-none transition-all"
+                      className="w-full px-4 py-3 border border-property-border rounded-lg bg-property-bg-elevated text-property-text focus:ring-2 focus:ring-property-gold/50 focus:border-property-gold outline-none transition-all"
                     />
                   </div>
 
                   {error && (
-                    <p className="text-red-600 text-sm">{error}</p>
+                    <p className="text-red-400 text-sm">{error}</p>
                   )}
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-property-gold hover:bg-property-gold-dark text-property-bg-primary font-semibold py-3 px-6 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? dict.form.submitting : dict.form.submitButton}
                   </button>

@@ -49,7 +49,7 @@ export default function LocationMap({ dictionary }: LocationMapProps) {
 
             {/* Distances */}
             <div>
-              <h4 className="font-semibold text-property-navy mb-4">
+              <h4 className="font-semibold text-property-gold mb-4">
                 {dictionary.common.from === "-tól" ? "Távolságok" : "Distances"}
               </h4>
               <div className="space-y-4">
@@ -59,11 +59,11 @@ export default function LocationMap({ dictionary }: LocationMapProps) {
                     className="flex items-center justify-between py-3 border-b border-property-border last:border-b-0"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-property-navy/10 rounded-full flex items-center justify-center">
-                        {index === 0 && <MetroIcon className="w-4 h-4 text-property-navy" />}
-                        {index === 1 && <CastleIcon className="w-4 h-4 text-property-navy" />}
-                        {index === 2 && <BridgeIcon className="w-4 h-4 text-property-navy" />}
-                        {index === 3 && <PlaneIcon className="w-4 h-4 text-property-navy" />}
+                      <div className="w-8 h-8 bg-property-gold/10 rounded-full flex items-center justify-center">
+                        {index === 0 && <MetroIcon className="w-4 h-4 text-property-gold" />}
+                        {index === 1 && <CastleIcon className="w-4 h-4 text-property-gold" />}
+                        {index === 2 && <BridgeIcon className="w-4 h-4 text-property-gold" />}
+                        {index === 3 && <PlaneIcon className="w-4 h-4 text-property-gold" />}
                       </div>
                       <span className="text-property-text">{distance.label}</span>
                     </div>

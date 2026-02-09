@@ -101,7 +101,7 @@ export default function ShareBar({ propertySlug, locale, propertyTitle = "Bem ra
         <span className="text-xs font-medium text-property-text-muted mb-1 [writing-mode:vertical-lr] rotate-180">
           {texts.shareLabel}
         </span>
-        <div className="flex flex-col gap-2 bg-white/90 backdrop-blur-sm rounded-full py-3 px-2 shadow-lg border border-property-border">
+        <div className="flex flex-col gap-2 bg-property-bg-secondary/90 backdrop-blur-sm rounded-full py-3 px-2 shadow-lg border border-property-border">
           <ShareButton onClick={() => handleShare("facebook")} label="Facebook">
             <FacebookIcon />
           </ShareButton>
@@ -125,7 +125,7 @@ export default function ShareBar({ propertySlug, locale, propertyTitle = "Bem ra
       </div>
 
       {/* Mobile: Bottom sticky bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-property-border px-4 py-2 safe-area-bottom">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-property-bg-primary/95 backdrop-blur-md border-t border-property-border px-4 py-2 safe-area-bottom">
         <div className="flex items-center justify-around max-w-md mx-auto">
           {typeof navigator !== "undefined" && "share" in navigator ? (
             <MobileShareButton onClick={handleNativeShare} label={texts.shareLabel}>
@@ -161,7 +161,7 @@ function ShareButton({ onClick, label, children }: { onClick: () => void; label:
     <button
       onClick={onClick}
       title={label}
-      className="w-9 h-9 flex items-center justify-center rounded-full text-property-text-muted hover:text-property-navy hover:bg-property-cream transition-colors"
+      className="w-9 h-9 flex items-center justify-center rounded-full text-property-text-muted hover:text-property-gold hover:bg-property-bg-elevated transition-colors"
     >
       {children}
     </button>
@@ -172,7 +172,7 @@ function MobileShareButton({ onClick, label, children }: { onClick: () => void; 
   return (
     <button
       onClick={onClick}
-      className="flex flex-col items-center gap-0.5 py-1 px-2 text-property-text-muted hover:text-property-navy transition-colors"
+      className="flex flex-col items-center gap-0.5 py-1 px-2 text-property-text-muted hover:text-property-gold transition-colors"
     >
       <span className="w-6 h-6">{children}</span>
       <span className="text-[10px] font-medium">{label}</span>
@@ -232,7 +232,7 @@ function LinkIcon() {
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5 text-green-600">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5 text-green-400">
       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
     </svg>
   );

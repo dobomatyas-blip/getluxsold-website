@@ -77,7 +77,7 @@ export default function SocialProofBar({ locale }: SocialProofBarProps) {
   const countriesCounter = useCountUp(STATS.countries);
 
   return (
-    <div ref={agentsCounter.ref} className="bg-property-navy py-6">
+    <div ref={agentsCounter.ref} className="bg-property-bg-primary py-6 border-y border-property-border">
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
           <StatItem value={agentsCounter.count} label={t.agents} />

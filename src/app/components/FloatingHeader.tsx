@@ -25,7 +25,7 @@ export default function FloatingHeader({ locale, basePath }: FloatingHeaderProps
     <header
       className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
+          ? "bg-property-bg-primary/95 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.3)] border-b border-property-border"
           : ""
       }`}
     >
@@ -33,7 +33,7 @@ export default function FloatingHeader({ locale, basePath }: FloatingHeaderProps
       <a href={locale === "hu" ? "/" : `/${locale}`} className="flex items-center gap-1.5 group">
         <span
           className={`font-[family-name:var(--font-property-display)] text-lg md:text-xl font-semibold tracking-tight transition-colors duration-300 ${
-            scrolled ? "text-property-navy" : "text-white"
+            scrolled ? "text-property-gold" : "text-white"
           }`}
         >
           GetLuxSold

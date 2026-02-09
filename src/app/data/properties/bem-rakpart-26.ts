@@ -1,0 +1,35 @@
+import { PropertyData } from "./types";
+
+export const bemRakpart26: PropertyData = {
+  slug: "bem-rakpart-26",
+  type: "apartment",
+  condition: "needs-renovation",
+  rooms: 2,
+  halfRooms: 1,
+  bathrooms: 1,
+  kitchens: 1,
+  totalSurface: 89,
+  livingArea: 89,
+  balconySurface: 4,
+  floor: 4,
+  ceilingHeight: 2.5,
+  heating: "central",
+  flooring: ["parquet", "tiles"],
+  features: [
+    "danubeView",
+    "balcony",
+    "heritageBuilding",
+    "parquetFlooring",
+    "highCeilings",
+    "centralHeating",
+    "metroNearby",
+    "unescoArea",
+    "cornerApartment",
+    "naturalLight",
+  ],
+  price: {
+    amount: 500000,
+    currency: "EUR",
+    prefix: "from",
+  },
+};

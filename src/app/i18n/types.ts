@@ -212,6 +212,72 @@ export interface Dictionary {
     termsLink: string;
     copyright: string;
   };
+  propertyDetails: {
+    sectionTitle: string;
+    keyFactsTitle: string;
+    featuresTitle: string;
+    labels: {
+      objectType: string;
+      condition: string;
+      rooms: string;
+      halfRooms: string;
+      bedrooms: string;
+      bathrooms: string;
+      kitchens: string;
+      floor: string;
+      totalSurface: string;
+      livingArea: string;
+      plotSurface: string;
+      terraceSurface: string;
+      balconySurface: string;
+      ceilingHeight: string;
+      garages: string;
+      yearBuilt: string;
+      heating: string;
+      flooring: string;
+      orientation: string;
+      energyRating: string;
+    };
+    types: {
+      apartment: string;
+      house: string;
+      villa: string;
+      penthouse: string;
+    };
+    conditions: {
+      new: string;
+      renovated: string;
+      good: string;
+      needsRenovation: string;
+    };
+    heatingTypes: {
+      central: string;
+      individual: string;
+      underfloor: string;
+      electric: string;
+    };
+    flooringTypes: {
+      parquet: string;
+      tiles: string;
+      wooden: string;
+      marble: string;
+      laminate: string;
+    };
+    features: {
+      danubeView: string;
+      balcony: string;
+      heritageBuilding: string;
+      parquetFlooring: string;
+      highCeilings: string;
+      centralHeating: string;
+      metroNearby: string;
+      unescoArea: string;
+      cornerApartment: string;
+      naturalLight: string;
+      elevator: string;
+      cellar: string;
+    };
+  };
   common: {
     learnMore: string;
     scheduleViewing: string;

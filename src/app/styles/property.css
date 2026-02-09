@@ -1,18 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  --property-navy: #1a365d;
-  --property-navy-light: #2d4a7c;
-  --property-navy-dark: #0f2340;
-  --property-gold: #d4af37;
-  --property-gold-light: #e5c76b;
-  --property-gold-dark: #b8941f;
-  --property-cream: #faf9f7;
-  --property-cream-dark: #f0eeea;
-  --property-text: #1a1a1a;
-  --property-text-muted: #4a4a4a;
-  --property-text-light: #6b6b6b;
-  --property-border: #e5e3df;
+  /* Dark luxury navy palette */
+  --property-bg-primary: #0c1220;
+  --property-bg-secondary: #121a2a;
+  --property-bg-elevated: #182236;
+  --property-bg-surface: #0e1624;
+  --property-bg-surface-alt: #0a0f1a;
+
+  /* Navy - used as dark contrast text on gold backgrounds */
+  --property-navy: #0c1220;
+  --property-navy-light: #182236;
+  --property-navy-dark: #060a12;
+  --property-cream: var(--property-bg-surface);
+  --property-cream-dark: var(--property-bg-surface-alt);
+
+  /* Gold accents */
+  --property-gold: #c9a84c;
+  --property-gold-light: #dfc070;
+  --property-gold-dark: #a8872a;
+
+  /* Text */
+  --property-text: #eae6de;
+  --property-text-muted: #8a9ab0;
+  --property-text-light: #5a6a80;
+
+  /* Borders & effects */
+  --property-border: #1e2a3e;
+  --property-glow: rgba(201, 168, 76, 0.12);
 }
 
 @theme inline {
@@ -28,11 +43,16 @@
   --color-property-text-muted: var(--property-text-muted);
   --color-property-text-light: var(--property-text-light);
   --color-property-border: var(--property-border);
+  --color-property-bg-primary: var(--property-bg-primary);
+  --color-property-bg-secondary: var(--property-bg-secondary);
+  --color-property-bg-elevated: var(--property-bg-elevated);
+  --color-property-bg-surface: var(--property-bg-surface);
+  --color-property-bg-surface-alt: var(--property-bg-surface-alt);
 }
 
 /* Base styles for property pages */
 .property-page {
-  background-color: var(--property-cream);
+  background-color: var(--property-bg-surface);
   color: var(--property-text);
   font-family: var(--font-property-body);
 }
@@ -40,14 +60,14 @@
 /* Typography */
 .property-heading {
   font-family: var(--font-property-display);
-  color: var(--property-navy);
+  color: var(--property-gold);
   font-weight: 600;
   line-height: 1.2;
 }
 
 .property-subheading {
   font-family: var(--font-property-display);
-  color: var(--property-navy);
+  color: var(--property-gold);
   font-weight: 500;
 }
 
@@ -57,18 +77,18 @@
   align-items: center;
   justify-content: center;
   background-color: var(--property-gold);
-  color: var(--property-navy);
+  color: var(--property-bg-primary);
   font-weight: 600;
   padding: 1rem 2rem;
   border-radius: 2px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.25);
 }
 
 .btn-property-primary:hover {
   background-color: var(--property-gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
 }
 
 .btn-property-secondary {
@@ -76,8 +96,8 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  border: 2px solid var(--property-navy);
-  color: var(--property-navy);
+  border: 2px solid var(--property-gold);
+  color: var(--property-gold);
   font-weight: 600;
   padding: 1rem 2rem;
   border-radius: 2px;
@@ -85,8 +105,8 @@
 }
 
 .btn-property-secondary:hover {
-  background-color: var(--property-navy);
-  color: white;
+  background-color: var(--property-gold);
+  color: var(--property-bg-primary);
 }
 
 .btn-property-secondary-white {
@@ -94,8 +114,8 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid rgba(234, 230, 222, 0.6);
+  color: rgba(234, 230, 222, 0.9);
   font-weight: 600;
   padding: 1rem 2rem;
   border-radius: 2px;
@@ -103,14 +123,15 @@
 }
 
 .btn-property-secondary-white:hover {
-  background-color: white;
-  color: var(--property-navy);
+  background-color: rgba(234, 230, 222, 0.1);
+  border-color: var(--property-text);
+  color: var(--property-text);
 }
 
 .btn-property-tertiary {
   display: inline-flex;
   align-items: center;
-  color: var(--property-gold-dark);
+  color: var(--property-gold);
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -118,20 +139,21 @@
 }
 
 .btn-property-tertiary:hover {
-  color: var(--property-gold);
+  color: var(--property-gold-light);
 }
 
 /* Card styles */
 .property-card {
-  background-color: white;
+  background-color: var(--property-bg-secondary);
   border: 1px solid var(--property-border);
   border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(26, 54, 93, 0.06);
-  transition: box-shadow 0.3s ease;
+  box-shadow: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .property-card:hover {
-  box-shadow: 0 4px 16px rgba(26, 54, 93, 0.1);
+  border-color: rgba(201, 168, 76, 0.2);
+  box-shadow: 0 4px 20px var(--property-glow);
 }
 
 /* Section styles */
@@ -152,7 +174,7 @@
 }
 
 .property-section-alt {
-  background-color: white;
+  background-color: var(--property-bg-surface-alt);
 }
 
 /* Animations */
@@ -195,9 +217,9 @@
 .property-hero-overlay {
   background: linear-gradient(
     to bottom,
-    rgba(26, 54, 93, 0.4) 0%,
-    rgba(26, 54, 93, 0.6) 50%,
-    rgba(26, 54, 93, 0.8) 100%
+    rgba(12, 18, 32, 0.5) 0%,
+    rgba(12, 18, 32, 0.7) 50%,
+    rgba(12, 18, 32, 0.9) 100%
   );
 }
 
@@ -207,7 +229,7 @@
   padding: 0.875rem 1rem;
   border: 1px solid var(--property-border);
   border-radius: 2px;
-  background-color: white;
+  background-color: var(--property-bg-elevated);
   color: var(--property-text);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -215,11 +237,17 @@
 .property-input:focus {
   outline: none;
   border-color: var(--property-gold);
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
 }
 
 .property-input::placeholder {
   color: var(--property-text-light);
+}
+
+/* Select dropdown dark styling */
+.property-input option {
+  background-color: var(--property-bg-elevated);
+  color: var(--property-text);
 }
 
 /* CJK font support for Chinese locale */
@@ -240,8 +268,8 @@
 
 /* Selection */
 .property-page ::selection {
-  background-color: rgba(212, 175, 55, 0.3);
-  color: var(--property-navy);
+  background-color: rgba(201, 168, 76, 0.3);
+  color: var(--property-text);
 }
 
 /* Scrollbar */
@@ -250,14 +278,14 @@
 }
 
 .property-page::-webkit-scrollbar-track {
-  background: var(--property-cream-dark);
+  background: var(--property-bg-primary);
 }
 
 .property-page::-webkit-scrollbar-thumb {
-  background: var(--property-navy-light);
+  background: var(--property-text-light);
   border-radius: 4px;
 }
 
 .property-page::-webkit-scrollbar-thumb:hover {
-  background: var(--property-navy);
+  background: var(--property-text-muted);
 }

@@ -38,8 +38,8 @@ export default function PotentialSection({ dictionary, locale }: PotentialSectio
                 onClick={() => setActiveTab("current")}
                 className={`flex-1 px-4 py-3 text-sm font-semibold transition-all duration-200 ${
                   activeTab === "current"
-                    ? "bg-property-navy text-white"
-                    : "bg-property-cream-dark text-property-text-muted hover:text-property-navy hover:bg-property-cream-dark/80"
+                    ? "bg-property-bg-elevated text-property-gold border-b-2 border-property-gold"
+                    : "bg-property-bg-primary text-property-text-muted hover:text-property-gold hover:bg-property-bg-elevated/80"
                 }`}
               >
                 {potential.renovation.tabCurrent}
@@ -49,13 +49,13 @@ export default function PotentialSection({ dictionary, locale }: PotentialSectio
                 className={`flex-1 px-4 py-3 text-sm font-semibold transition-all duration-200 ${
                   activeTab === "renovated"
                     ? "bg-property-gold text-white"
-                    : "bg-property-cream-dark text-property-text-muted hover:text-property-gold-dark hover:bg-property-cream-dark/80"
+                    : "bg-property-bg-primary text-property-text-muted hover:text-property-gold-dark hover:bg-property-bg-elevated/80"
                 }`}
               >
                 {potential.renovation.tabRenovated}
               </button>
             </div>
-            <div className="p-4 bg-white">
+            <div className="p-4 bg-property-bg-secondary">
               {activeTab === "current" ? (
                 <FloorPlanSVG dictionary={dictionary} locale={locale} />
               ) : (
@@ -66,7 +66,7 @@ export default function PotentialSection({ dictionary, locale }: PotentialSectio
 
           {/* Room Details */}
           <div className="property-card overflow-hidden">
-            <div className="p-4 bg-property-navy text-white border-b border-property-border">
+            <div className="p-4 bg-property-bg-elevated text-property-gold border-b border-property-border">
               <h3 className="font-semibold">{potential.rooms.title}</h3>
             </div>
             <div className="p-4 space-y-3 max-h-[500px] overflow-y-auto">
@@ -127,7 +127,7 @@ export default function PotentialSection({ dictionary, locale }: PotentialSectio
               <div className="pt-3 border-t border-property-border">
                 <div className="flex justify-between items-center text-sm text-property-text-muted">
                   <span className="flex gap-2">
-                    <span className="text-property-navy font-medium">A7-A9</span>
+                    <span className="text-property-gold font-medium">A7-A9</span>
                     {potential.rooms.utilities}
                   </span>
                   <span>3,6 m²</span>
@@ -162,7 +162,7 @@ export default function PotentialSection({ dictionary, locale }: PotentialSectio
               )}
               <div className="pt-3 border-t-2 border-property-gold">
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold text-property-navy">{potential.rooms.total}</span>
+                  <span className="font-semibold text-property-text">{potential.rooms.total}</span>
                   <span className="font-bold text-property-gold-dark text-lg">89 m²</span>
                 </div>
               </div>
@@ -236,22 +236,22 @@ function RoomCard({
   return (
     <div
       className={`flex items-center gap-3 p-3 rounded-lg ${
-        highlight ? "bg-property-gold/10 border border-property-gold/30" : "bg-property-cream-dark"
+        highlight ? "bg-property-gold/10 border border-property-gold/30" : "bg-property-bg-primary"
       }`}
     >
       <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-        highlight ? "bg-property-gold/20 text-property-gold-dark" : "bg-property-navy/10 text-property-navy"
+        highlight ? "bg-property-gold/20 text-property-gold-dark" : "bg-property-gold/10 text-property-gold"
       }`}>
         {icon}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-sm font-medium text-property-navy truncate">
+        <div className="text-sm font-medium text-property-text truncate">
           <span className="font-bold mr-1.5">{code}</span>
           {name}
         </div>
         <div className="text-xs text-property-text-muted">{dimensions} m</div>
       </div>
-      <div className={`text-right ${highlight ? "text-property-gold-dark" : "text-property-navy"}`}>
+      <div className={`text-right ${highlight ? "text-property-gold-dark" : "text-property-text"}`}>
         <span className="font-semibold">{area}</span>
         <span className="text-xs text-property-text-muted ml-0.5">m²</span>
       </div>

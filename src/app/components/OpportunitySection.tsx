@@ -48,7 +48,7 @@ export default function OpportunitySection({ dictionary }: OpportunitySectionPro
                     }`}
                   >
                     <td className="py-4 px-4">
-                      <span className={index === opportunity.priceComparison.locations.length - 1 ? "font-semibold text-property-navy" : ""}>
+                      <span className={index === opportunity.priceComparison.locations.length - 1 ? "font-semibold text-property-gold" : ""}>
                         {location.name}
                       </span>
                       {index === opportunity.priceComparison.locations.length - 1 && (
@@ -75,8 +75,8 @@ export default function OpportunitySection({ dictionary }: OpportunitySectionPro
         <div className="grid md:grid-cols-2 gap-8">
           {/* Scarcity Card */}
           <div className="property-card p-8">
-            <div className="w-12 h-12 bg-property-navy/10 rounded-lg flex items-center justify-center mb-4">
-              <DiamondIcon className="w-6 h-6 text-property-navy" />
+            <div className="w-12 h-12 bg-property-gold/10 rounded-lg flex items-center justify-center mb-4">
+              <DiamondIcon className="w-6 h-6 text-property-gold" />
             </div>
             <h3 className="property-subheading text-xl mb-4">
               {opportunity.scarcityTitle}
