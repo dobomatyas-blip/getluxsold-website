@@ -269,6 +269,12 @@ export const ru: Dictionary = {
       },
     },
   },
+  ownerProfile: {
+    sectionTitle: "Контактное лицо",
+    role: "Владелец",
+    description: "Прямой контакт с владельцем, без посредников. Не стесняйтесь обращаться ко мне с любыми вопросами о недвижимости.",
+    contactButton: "Связаться",
+  },
   footer: {
     companyName: "Endless Solutions Kft.",
     address: "Будапешт, Венгрия",

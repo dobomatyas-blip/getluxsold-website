@@ -269,6 +269,12 @@ export const vi: Dictionary = {
       },
     },
   },
+  ownerProfile: {
+    sectionTitle: "Người liên hệ",
+    role: "Chủ sở hữu",
+    description: "Liên hệ trực tiếp với chủ sở hữu, không qua trung gian. Đừng ngần ngại liên hệ với tôi nếu có bất kỳ câu hỏi nào về bất động sản.",
+    contactButton: "Liên hệ ngay",
+  },
   footer: {
     companyName: "Endless Solutions Kft.",
     address: "Budapest, Hungary",

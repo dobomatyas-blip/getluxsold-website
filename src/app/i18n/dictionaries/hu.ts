@@ -269,6 +269,12 @@ export const hu: Dictionary = {
       },
     },
   },
+  ownerProfile: {
+    sectionTitle: "Kapcsolattartó",
+    role: "Tulajdonos",
+    description: "Közvetlen kapcsolat a tulajdonossal, közvetítők nélkül. Bármilyen kérdése van az ingatlannal kapcsolatban, forduljon hozzám bizalommal.",
+    contactButton: "Kapcsolatfelvétel",
+  },
   footer: {
     companyName: "Endless Solutions Kft.",
     address: "Budapest, Magyarország",

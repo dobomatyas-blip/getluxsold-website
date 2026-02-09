@@ -349,17 +349,9 @@ export default function HomePage({ locale }: HomePageProps) {
         <FloatingHeader locale={locale} />
 
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          <Image
-            src="/images/hero.jpg"
-            alt="GetLuxSold"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-            quality={85}
-          />
-          <div className="absolute inset-0 property-hero-overlay" />
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-property-bg-primary">
+          {/* Subtle radial glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.08)_0%,transparent_70%)]" />
           <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <div className="property-animate-fade-up">
               <span className="inline-block px-4 py-2 text-xs font-semibold tracking-widest uppercase bg-property-gold/90 text-property-navy rounded-sm mb-8">

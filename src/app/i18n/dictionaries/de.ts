@@ -269,6 +269,12 @@ export const de: Dictionary = {
       },
     },
   },
+  ownerProfile: {
+    sectionTitle: "Ansprechpartner",
+    role: "Eigentümer",
+    description: "Direkter Kontakt mit dem Eigentümer, ohne Vermittler. Zögern Sie nicht, mich bei Fragen zur Immobilie zu kontaktieren.",
+    contactButton: "Kontakt aufnehmen",
+  },
   footer: {
     companyName: "Endless Solutions Kft.",
     address: "Budapest, Ungarn",

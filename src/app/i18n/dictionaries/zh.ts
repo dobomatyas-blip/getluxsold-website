@@ -269,6 +269,12 @@ export const zh: Dictionary = {
       },
     },
   },
+  ownerProfile: {
+    sectionTitle: "联系人",
+    role: "业主",
+    description: "直接与业主联系，无中间人。如有任何关于房产的问题，请随时与我联系。",
+    contactButton: "联系我们",
+  },
   footer: {
     companyName: "Endless Solutions Kft.",
     address: "匈牙利，布达佩斯",

@@ -269,6 +269,12 @@ export const he: Dictionary = {
       },
     },
   },
+  ownerProfile: {
+    sectionTitle: "איש קשר",
+    role: "בעלים",
+    description: "קשר ישיר עם הבעלים, ללא מתווכים. אל תהססו לפנות אליי בכל שאלה בנוגע לנכס.",
+    contactButton: "צרו קשר",
+  },
   footer: {
     companyName: "Endless Solutions Kft.",
     address: "בודפשט, הונגריה",

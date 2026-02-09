@@ -205,6 +205,12 @@ export interface Dictionary {
       };
     };
   };
+  ownerProfile: {
+    sectionTitle: string;
+    role: string;
+    description: string;
+    contactButton: string;
+  };
   footer: {
     companyName: string;
     address: string;

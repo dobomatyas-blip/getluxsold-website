@@ -21,6 +21,7 @@ import ShareBar from "./ShareBar";
 import UtmCapture from "./UtmCapture";
 import AgentBrandBanner from "./AgentBrandBanner";
 import SocialProofBar from "./SocialProofBar";
+import OwnerProfileSection from "./OwnerProfileSection";
 
 interface PropertyPageProps {
   dictionary: Dictionary;
@@ -58,6 +59,11 @@ export default function PropertyPage({ dictionary, locale, basePath, propertySlu
       <ProcessSection dictionary={dictionary} />
       <TestimonialsSection dictionary={dictionary} />
       <SocialProofBar locale={locale} />
+      <OwnerProfileSection
+        dictionary={dictionary}
+        ownerName="Daniel Doransky"
+        ownerPhoto="/images/owner.jpg"
+      />
       <ContactForm dictionary={dictionary} locale={locale} />
       <AgentCTASection dictionary={dictionary} locale={locale} />
       <SellerCTASection locale={locale} showCaseStudy={false} />
